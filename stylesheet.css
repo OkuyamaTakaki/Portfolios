@@ -1,0 +1,80 @@
+/** 2025年10月1日水曜日 制作・著作 Okuyama Takaki **/
+
+/*-- 最上部 ページ全体のレイアウト --*/
+/* 全ての要素 */
+* {
+    color: white; /* 基本文字色を統一 */
+}
+/* body要素 */
+body {
+    background-color: #2f2a20; /* 1/4 背景色 */  
+}
+
+/* 最上部 主に余白とマージンの調整 */
+body {
+    width: 75%; /* 横幅指定 */
+    margin: 0 auto; /* 中央揃え */
+}
+#selfIntroduction, ul {
+    margin: 0px;
+    padding: 0px;
+}
+div, h3 { 
+    margin: 3px;
+}
+div, li, h1, h2, h3, p { 
+    padding: 3px;
+}
+header, #main, footer, #career ul {
+    margin: 6px;
+}
+/* 経歴のp要素 */
+#career p {
+    margin: 25px 8px 25px 8px;
+}
+/* 最下部 主に余白とマージンの調整 */
+
+a, header, div, footer, h1, h2 ,h3 {
+    border-radius: 5px; /* table要素以外の、一番外側となる親要素(div)などの丸角 */
+}
+/* タイトル要素 */
+h2, h3 {
+    margin: 8px;
+    border-top: solid 2px white;
+    background-color: #474747; /* 2/4 背景色 */
+}
+/* body 要素の直下の子要素に対する共通レイアウト */
+a, header, #main, footer {
+    border: solid 0.5px white;
+    background-color: #7d7c7c; /* 3/4 背景色*/
+}
+/*main 要素の直下の子要素に対する共通レイアウト*/
+#profile, #career, #aboutMe, .portFolio {
+    background-color: #1d1e1e;  /* 4/4 背景色*/
+}
+/*-- 最下部 ページ全体のレイアウト --*/
+
+
+/* 自己紹介 */
+#aboutMe ul {
+    list-style: none; /* ulの点を消す */
+}
+
+/* ポートフォリオ */
+.portFolio > * {
+    margin-bottom: auto;/* ポートフォリオ内の要素を上に揃える */
+    width: 50%; /* 横幅指定 */
+    text-align: center; /* 文字を中央揃え */
+}
+.portFolio {
+    display: flex; /* 横並び */
+}
+.image-wrapper > img {
+    /* ポートフォリオのプレビュー画像の大きさ */
+    height: 60%; 
+    width: 60%;
+}
+.portFolio > div > a {
+    text-decoration: none; /* 下線を非表示 */
+    background-color: green !important; /* 強調色を指定 */
+}
