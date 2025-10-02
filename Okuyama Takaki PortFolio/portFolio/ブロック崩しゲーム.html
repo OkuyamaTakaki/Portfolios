@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang='ja'>
+    <head>
+        <meta charset="utf-8" />
+        <title>ブロック崩しゲーム</title>
+        <style>* { padding: 0; margin: 0; } canvas { background: black; display: block; margin: 0 auto; }</style>
+    </head>
+    <body>
+        <canvas id="my_canvas" width="480" height="320"></canvas>
+        <script>
+        //20230218 制作者 奥山貴希
+        // canvasを取得
+        const canvas = document.getElementById('my_canvas');
+        const context2d = canvas.getContext('2d');
+        // セットタイムアウト＆インターバルの基本スピード
+        const exe_func_speed = 1000;
+        // インターバル停止のための戻り値を保持
+        let interval_timer = '';
+        // パス開始
+        function context2dBeginPath() {
+            context2d.beginPath();
+        }
+        // パス終了
+        function context2dClosePath() {
+            context2d.closePath();
+        }
+        // 全描写クリア
+        function context2dClearRect() {
+            context2d.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        // 文字の、サイズ、フォント、色
+        function drawTextStyle (font_size = '30px', fill_style = 'white', font = 'Arial') {
+            context2d.font = font_size + ' ' + font;
+            context2d.fillStyle = fill_style;
+        }
+        // 文字の位置 縦 横
+        let text_center_height = canvas.height / 2;
+        let text_center_width = canvas.width / 2;
+        // 文字描写 描写文字 縦位置 横位置
+        function drawText(text = '未設定', text_height_pos = text_center_width, text_left_pos = text_center_width) {
+            context2d.fillText(text, text_height_pos, text_left_pos);
+        }
+        // ブロック
+        // 縦数
+        let brick_row_count = 3;
+        // 横数
+        let brick_column_count = 5;
+        // 総数
+        let sum_brick_count = brick_row_count * brick_column_count;
+        // 横幅
+        let brick_width = 75;
+        // 縦幅
+        let brick_height = 20;
+        // 余白
+        let brick_padding = 10;
+        // 上位置
+        let brick_offset_top = 40;
+        // 左位置
+        let brick_offset_left = 30;
+        // 生成
+        let bricks = [];
+        for(var c = 0; c < brick_column_count; c++) {
+            bricks[c] = [];
+            for(var r = 0; r < brick_row_count; r++) {
+                //プロパティの設定
+                // x y 座標 status 0 非表示 0 よりも上表示
+                bricks[c][r] = { x: 0, y: 0, status: 1, color_code: 0 };
+            }
+        }
+        // カラーコード定義
+        for(var r = 0; r < brick_row_count; r++) {
+            bricks[c] = [];
+            for(var c = 0; c < brick_column_count; c++) {
+                bricks[c][r].color_code += r;
+            }
+        }
+        // 配色
+        function drawBricksColor (c , r) {
+            switch(bricks[c][r].color_code) {
+                    case 0:
+                        context2d.fillStyle = 'orange';
+                    break;
+                    case 1:
+                        context2d.fillStyle = 'yellow';
+                    break;
+                    case 2:
+                        context2d.fillStyle = '#0095DD';
+                    break;
+            }
+            context2d.fill();
+        }
+        // ブロック描写
+        function drawBricks() {
+            for(var c = 0; c < brick_column_count; c++) {
+                for(var r = 0; r < brick_row_count; r++) {
+                    // ボール未衝突時
+                    if (bricks[c][r].status == 1) {
+                        let brick_x = (c * (brick_width + brick_padding)) + brick_offset_left;
+                        let brick_y = (r * (brick_height + brick_padding)) + brick_offset_top;
+                        bricks[c][r].x = brick_x;
+                        bricks[c][r].y = brick_y;
+                        context2dBeginPath();
+                        context2d.rect (brick_x, brick_y, brick_width, brick_height);
+                        //配色
+                        drawBricksColor (c, r);
+                        context2dClosePath();
+                    }
+                }
+            }
+        }
+        // ボール
+        // 開始位置 x y 座標
+        let x = canvas.width / 2;
+        let y = canvas.height - 30;
+        // 速度切り替えフラグ
+        let ball_speed_switch = 1;
+        // 速度
+        let dx = 2;
+        let dy = -2;
+        // 描写された円の半径を保持し、計算に使用
+        const ball_radius = 8;
+        // ボール描写
+        function drawBall() {
+            context2dBeginPath();
+            // 円描写
+            /*1 円の中心の x,2 y ,座標,3 円の半径4, 開始角度, 5 終了角度 (円を描く始める時点の角度と描き終えたあとの角度をラジアンで)
+            6描く方向 (時計回りは false で、既定値。反時計回りは true。) 最後の引数は省略可能 */
+            context2d.arc(x, y, ball_radius, 0, Math.PI * 2);
+            //色
+            context2d.fillStyle = 'white';
+            context2d.fill();
+            context2dClosePath();
+        }
+        // パドル
+        // 高さ
+        let paddle_height = 10;
+        // 下の余白
+        let paddle_bottom_padding = 5;
+        // パドルの幅
+        let paddle_width = 75;
+        // パドルの幅を調整
+        let paddle_x = (canvas.width - paddle_width) / 2;
+        // パドル描写
+        function drawPaddle() {
+            context2dBeginPath();
+            context2d.rect(paddle_x, canvas.height - paddle_height - paddle_bottom_padding, paddle_width, paddle_height);
+            context2d.fillStyle = 'white';
+            context2d.fill();
+            context2dClosePath();
+        }
+        // 落下エリア描写
+        function drawFallArea() {
+            context2dBeginPath();
+            context2d.rect(0, canvas.height - paddle_height / 2, canvas.width, paddle_height);
+            context2d.fillStyle = 'red';
+            context2d.fill();
+            context2dClosePath();
+        }
+        // ブロック、ボール、パドル、落下エリアを描写
+        function drawBricksBallPaddle () {
+            // ブロック
+            drawBricks();
+            // ボール
+            drawBall();
+            // パドル
+            drawPaddle();
+            // 落下エリア
+            drawFallArea();
+        }
+        // テスト用
+        function testAlert(text = '未定義') {
+            alert(text);
+        }
+        // S1 (Screen 1番目) スタート画面
+        function drawStartScreen() {
+            // 描写開始
+            context2dBeginPath();
+            // ブロック、ボール、パドル、落下エリア描写
+            drawBricksBallPaddle();
+            // 文字の、サイズ、フォント、色
+            drawTextStyle();
+            // 文字描写
+            drawText('ブロック崩しゲーム', text_center_width / 2 - 15, text_center_height + 30);
+            drawText('Enterキーでスタート', text_center_width / 2 - 17, text_center_height + 60);
+            // 描写終了
+            context2dClosePath();
+        }
+        // S1 
+        drawStartScreen();
+        // S2 カウントダウン画面
+        // 描写(インターバル)回数(秒)
+        let draw_text_time = 3;
+        let draw_text = '未設定';
+        let draw_text_interval = '';
+        let draw_text_start = 'ゲーム開始';
+        let draw_text_end = 'タイムアップ';
+        let draw_text_bounus = 'パーフェクト';
+        // 次のスクリーン
+        let next_function_screen = '';
+        // スタートカウント
+        function drawTextCountDown() {
+            drawTextStyle('50px');
+            drawText(draw_text_time, text_center_width - 18, text_center_height + 5);
+        }
+        // 開始
+        function drawTextStartGame() {
+            drawTextStyle();
+            drawText(draw_text_start, text_center_width - 30 * 2.5, text_center_height + 5);
+        }
+        // 全消し時
+        function drawTextBounus() {
+            drawTextStyle('30px', 'yellow');
+            drawText(draw_text_bounus, text_center_width - 95, text_center_height);
+        }
+        // 終了
+        function drawTextStopGame() {
+            drawTextStyle('30px', 'red');
+            drawText(draw_text_end, text_center_width - 95, text_center_height);
+        }
+        // 画面が切り替わる時の表示
+        function drawNextScreen() {
+            context2dClearRect();
+            // カウントダウン中
+            if(0 < draw_text_time){
+                switch(draw_text) {
+                    // 終了時
+                    case draw_text_end:
+                        drawTextStopGame();
+                    break;
+                    // ボーナス時
+                    case draw_text_bounus:
+                        drawTextBounus();
+                    break;
+                    // 開始カウント
+                    default:
+                        drawBricksBallPaddle();
+                        drawTextCountDown();
+                    break;
+                }
+                draw_text_time--;
+            //カウント終了
+            } else if (draw_text_time === 0) {
+                switch(draw_text) {
+                    // 終了時
+                    case draw_text_end:
+                        drawTextStopGame();
+                    break;
+                    // ボーナス時
+                    case draw_text_bounus:
+                        drawTextBounus();
+                    break;
+                    // 開始次
+                    case draw_text_start:
+                        drawBricksBallPaddle();
+                        drawTextStartGame()
+                    break;
+                }
+                clearInterval(draw_text_interval);
+                // インターバル停止 テスト
+                //(draw_text);
+                // S3 ゲーム画面 S4 結果画面
+                setTimeout(next_function_screen, exe_func_speed);
+            }
+        }
+        // S2
+        function drawtSetNexScreen(this_next_function_screen = '関数無し', this_draw_text = '未設定') {
+            draw_text_time = 3;
+            // 次の画面をセット
+            next_function_screen = this_next_function_screen;
+            let interval_speed = exe_func_speed;
+            context2dClearRect();
+            drawBricksBallPaddle();
+            // カウントダウン
+            draw_text = this_draw_text;
+            draw_text_interval = setInterval (drawNextScreen, interval_speed);
+        }
+        // S3 ゲーム画面
+        // タイマー
+        let time = 0;
+        // 制限時間(秒)
+        let time_limit = 30;
+        function timer () {
+            //タイムが0よりも上のとき、タイムをデクリメント
+            if (0 < time) {
+                time-= 1;
+            }
+        }
+        // 各スコア 0ブロック得点 1ブロックヒット数 2落下数 3ボーナス得点  4合計得点
+        let sum_score = [0, 0, 0, 0, 0];
+        // 文字描写
+        let font_height = 22;
+        function drawTextPlayGame() {
+            let font_size = '18px';
+            // 制限時間
+            drawTextStyle(font_size);
+            drawText('制限時間：' + time +'秒', 85, font_height);
+            // 得点
+            drawTextStyle(font_size);
+            drawText('スコア：' + sum_score[0], 235, font_height);
+            // 落下数
+            drawTextStyle(font_size, 'red');
+            drawText('落下回数：' + sum_score[2], 350, font_height);
+            // ボールスピード
+            drawTextBallSpeed();
+        }
+        //ボールの速さを変更
+        function changeBallSpeed() {
+            // 2倍
+            if(ball_speed_switch === 1) {
+                ball_speed_switch = 2;
+                dx = dx * 2;
+                dy = dy * 2;
+            // 等倍
+            } else if (ball_speed_switch === 2) {
+                ball_speed_switch = 1;
+                dx = dx / 2;
+                dy = dy / 2;
+            }
+        }
+        // ボールの速さ表示関数
+        function drawTextBallSpeed() {
+            // 描写位置
+            let font_left_width = 10;
+            drawTextStyle('20px');
+            // 等倍
+            if(ball_speed_switch === 1){
+                drawText('▶x' + ball_speed_switch, font_left_width, font_height);
+            // 2倍
+            } else if (ball_speed_switch === 2){
+                drawText('▶▶x' +  ball_speed_switch, font_left_width, font_height);
+            }
+        }
+        // 加算スコア
+        let add_score = 0;
+        let interval_add_num_anim_score = '';
+        function AddNumAnimScore () {
+            if(add_score === 0){
+                clearInterval(interval_add_num_anim_score);
+                // インターバル停止 テスト
+                //testAlert('スコア加算完了');
+            } else if(0 < add_score){
+                sum_score[0] += 1;
+                add_score--;
+            }
+        }
+        // カラーコードに応じてスコア加算
+        // スコア
+        let brick0_socre = 12;
+        let brick1_socre = 5;
+        let brick2_socre = 3;
+        function AddBirockScore(color_code) {
+            let interval_Speed = 80;
+            switch(color_code) {
+                case 0:
+                    add_score += brick0_socre;
+                    interval_add_num_anim_score = setInterval(AddNumAnimScore, interval_Speed);
+                break;
+                case 1:
+                    add_score += brick1_socre;
+                    interval_add_num_anim_score = setInterval(AddNumAnimScore, interval_Speed);
+                break;
+                case 2:
+                    add_score += brick2_socre;
+                    interval_add_num_anim_score = setInterval(AddNumAnimScore, interval_Speed);
+                break;
+            }
+        }
+        // 各衝突判定
+        function collisionDetection() {
+            // ボールとブロック
+            for (var c = 0; c < brick_column_count; c++) {
+                for (var r = 0; r < brick_row_count; r++) {
+                    let b = bricks[c][r];
+                    // ボール未衝突
+                    if (b.status == 1) {
+                        //
+                        /*
+                        ボールの x 座標がブロックの x 座標より大きい
+                        ボールの x 座標がブロックの x 座標とその幅の和より小さい
+                        ボールの y 座標がブロックの y 座標より大きい
+                        ボールの y 座標がブロックの y 座標とその高さの和より小さい
+                        */
+                        if (x > b.x && x < b.x + brick_width && y > b.y && y < b.y + brick_height) {
+                            dy = -dy;
+                            //ブロックに当たった回数をカウント
+                            sum_score[1]++;
+                            //ブロックを非表示
+                            b.status = 0;
+                            AddBirockScore(b.color_code);
+                        }
+                    }
+                }
+            }
+            // ボールとcanvas
+            // x軸の判定
+            if (x + dx > canvas.width - ball_radius || x + dx < ball_radius) {
+                dx = -dx;
+            }
+            // y軸の判定
+            if (y + dy < ball_radius) {
+                dy = -dy;
+            // ボールと底面
+            } else if (y + dy > canvas.height - paddle_bottom_padding - ball_radius) {
+                // 非衝突
+                if (x > paddle_x && x < paddle_x + paddle_width) {
+                    dy = -dy;
+                // 衝突時
+                } else {
+                    dy = -dy;
+                    // 落下回数としてカウント
+                    sum_score[2] ++;
+                }
+            }
+        }
+        // パドル左右のスピード
+        let right_pressed = false;
+        let left_pressed = false;
+        function paddleSpeed(){
+            let speed = 7;
+            if(right_pressed) {
+                paddle_x += speed;
+                if (paddle_x + paddle_width > canvas.width){
+                    paddle_x = canvas.width - paddle_width;
+                }
+            } else if(left_pressed) {
+                    paddle_x -= speed;
+                if (paddle_x < 0){
+                    paddle_x = 0;
+                }
+            }
+        }
+        // ゲーム画面描写
+        // 停止
+        let space_pressed = true;
+        function drawStopGameScreen() {
+            //スペース検知停止
+            space_pressed = true;
+            //タイマー停止
+            clearInterval(interval_timer);
+            // インターバル停止 テスト
+            //testAlert('タイマー停止');
+            //ゲーム描写停止
+            cancelAnimationFrame(drawStartGameScreen);
+            // インターバル停止 テスト
+            //testAlert('ゲーム画面停止');
+        }
+        // 開始
+        function drawStartGameScreen() {
+            context2dClearRect();
+            drawBricksBallPaddle();
+            // ゲーム画面文字描写
+            drawTextPlayGame();
+            // ブロックの当たり判定の関数を呼び出す
+            collisionDetection();
+            // パドル左右のスピード
+            paddleSpeed();
+            // ボールのx軸とy軸を動かす
+            x += dx;
+            y += dy;
+            // ブロック全消し時(ボーナス)
+            if(sum_score[1] === sum_brick_count) {
+                time = -1;
+                // ゲーム描写停止
+                drawStopGameScreen();
+                drawtSetNexScreen(drawResultScoreScreen, draw_text_bounus);
+            }
+            // 制限時間終了
+            if(time === 0){
+                drawStopGameScreen();
+                drawtSetNexScreen(drawResultScoreScreen, draw_text_end);
+            // 制限時間中
+            } else if (0 < time) {
+                // ゲーム描写続行
+                requestAnimationFrame(drawStartGameScreen);
+            }
+        }
+        function drawSetGameScreen() {
+            // 制限時間設定
+            time = time_limit;
+            // 制限時間開始
+            interval_timer = setInterval(timer, 1000);
+            drawStartGameScreen();
+            //スペース検知 開始
+            space_pressed = false;
+        }
+        // S4 結果画面描写
+        // 各表示スコア 0ブロック得点 1ブロックヒット数 2落下数 3ボーナス得点 4合計得点
+        let draw_sum_score = [0, 0, 0, 0, 0];
+        // 添え字
+        let result_i = 0;
+        // 表示内容
+        let text_padding_left = 35;
+        let under_line = '-----------------------------------------';
+        // ブロック得点
+        function drawTextResultAddPlusScore() {
+            context2dClearRect();
+            drawTextStyle('35px', 'white');
+            drawText('<結果発表>', 148, 50);
+            drawTextStyle('35px', 'white');
+            drawTextStyle();
+            drawText('| 合計スコア　　　　| ' + draw_sum_score[0] + ' 点', text_padding_left, 80);
+            drawText(under_line, text_padding_left, 95);
+        }
+        // ヒット数
+        function drawTextResultAddHitScore() {
+            context2dClearRect();
+            drawTextResultAddPlusScore();
+            drawTextStyle();
+            drawText('| ヒット回数　　　　| ' + draw_sum_score[1] + ' 点', text_padding_left , 115);
+            drawText(under_line, text_padding_left, 130);
+        }
+        // 落下数
+        function drawTextResultAddFallScore() {
+            context2dClearRect();
+            drawTextResultAddPlusScore();
+            drawTextResultAddHitScore();
+            drawTextStyle('30px', 'red');
+            drawText('| 落ちた回数(減点)　 | ' + draw_sum_score[2] + ' 点', text_padding_left, 150);
+            drawText(under_line, text_padding_left, 165);
+        }
+        // ボーナス
+        function drawTextResultAddBounusScore() {
+            context2dClearRect();
+            drawTextResultAddPlusScore();
+            drawTextResultAddHitScore();
+            drawTextResultAddFallScore();
+            drawTextStyle('30px', '#f0e68c');
+            drawText('| 全消しボーナス　　| ' + draw_sum_score[3] + ' 点', text_padding_left, 185);
+            drawText(under_line, text_padding_left, 200);
+        }
+        // 最終結果
+        function drawTextResultSumScore() {
+            context2dClearRect();
+            drawTextResultAddPlusScore();
+            drawTextResultAddHitScore();
+            drawTextResultAddFallScore();
+            drawTextResultAddBounusScore();
+            drawTextStyle('30px', '#e6e6fa');
+            drawText('| 今回の得点　　　　| ' + draw_sum_score[4] + ' 点', text_padding_left, 220);
+            drawText(under_line, text_padding_left, 235);
+        }
+        // 終了キー表示
+        function drawTextResultEnd() {
+            drawTextStyle();
+            drawText('', 5, 254);
+            drawText('shiftキーで終了', 140, 260);
+        }
+        // 各表示に切り替え
+        function drawTextResultScores(){
+            switch(result_i) {
+                //各表示
+                case 0:
+                    drawTextResultAddPlusScore();
+                break;
+                case 1:
+                    drawTextResultAddHitScore();
+                break;
+                case 2:
+                    drawTextResultAddFallScore();
+                break;
+                case 3:
+                    drawTextResultAddBounusScore();
+                break;
+                case 4:
+                    drawTextResultSumScore();
+                break;
+            }
+        }
+        let interval_add_num_result_anim_score = '';
+        // 空白で0埋め
+        function drawNumPaddingWith0(num, padding_00 = '    ',  slice_00 = -4, padding_0  = '     ', slice_0 = -5) {
+            // 2桁
+            if(9 < num && num < 100){
+                num = (padding_00 + num).slice(slice_00);
+            } else if(num < 10) {
+            // 1桁
+                num = (padding_0 + num).slice(slice_0);
+            }
+            return num;
+        }
+        // スコアを1ずつ表示
+        function AddNumAnimResultScore () {
+            if(sum_score[result_i] === 0){
+                drawTextResultScores();
+                clearInterval(interval_add_num_result_anim_score);
+                // 0埋め
+                draw_sum_score[result_i] = drawNumPaddingWith0(draw_sum_score[result_i]);
+                // インターバル停止 テスト
+                //testAlert(result_i + '番目： 結果スコア加算完了');
+            } else if(0 < sum_score[result_i]){
+                // 表示スコア
+                draw_sum_score[result_i] += 1
+                drawTextResultScores();
+                //drawNumPaddingWith0();
+                sum_score[result_i]--;
+            }
+        }
+        let interval_draw_lesult_score = [];
+        function drawResultScore() {
+            let interval_Speed = 100;
+            if(result_i < sum_score.length){
+                if (sum_score[result_i] === 0 ) {
+                    setTimeout(AddNumAnimResultScore, exe_func_speed);
+                    clearInterval(interval_draw_lesult_score[result_i]);
+                    draw_sum_score[result_i] = drawNumPaddingWith0(draw_sum_score[result_i]);
+                    // インターバル停止 テスト
+                    //testAlert(result_i + '番目： 結果スコア加算呼び出し完了');
+                    result_i++;
+                } else if (0 < sum_score[result_i]) {
+                    // スコアを1ずつ表示
+                    interval_add_num_result_anim_score = setInterval(AddNumAnimResultScore, interval_Speed);
+                }    
+            }else {
+                clearInterval(interval_draw_lesult_score);
+                // インターバル停止 テスト
+                //testAlert('結果スコア加算終了');
+                setTimeout(drawTextResultEnd, exe_func_speed * 2);
+            }
+        }
+        // 合計スコア計算
+        function calcScore() {
+            // 各表示スコア 0ブロック得点 1ブロックヒット数 2落下数 3ボーナス得点 4合計得点
+            // ボーナス加点
+            let bounus = 20;
+            if(sum_score[1] === sum_brick_count){
+                sum_score[3] = bounus;
+            }
+            sum_score[4] = sum_score[0] + sum_score[1] + sum_score[3] - sum_score[2];
+        }
+        // S4 結果画面
+        function drawResultScoreScreen() {
+            // 合計スコア計算
+            calcScore();
+            if (0 <= sum_score[4]){
+                interval_draw_lesult_score = setInterval(drawResultScore, exe_func_speed * 0.8);
+            // スコアがマイナスになったとき(例外)
+            } else if (sum_score[4] < 0){
+                testAlert('スコアが異常です');
+            }
+        }
+        // イベントリスナー
+        let enter_pressed = false;
+        document.addEventListener('keydown', keyDownHandler, false);
+        document.addEventListener('keyup', keyUpHandler, false);
+        function keyDownHandler (e) {
+            if (e.key === 'Right' || e.key === 'ArrowRight') {
+                right_pressed = true;
+            } else if (e.key === 'Left' || e.key === 'ArrowLeft') {
+                left_pressed = true;
+            // Enetrキー ゲーム開始
+            } else if (e.keyCode === 13 && enter_pressed === false) {
+                enter_pressed = true;
+                // S2
+                drawtSetNexScreen(drawSetGameScreen, draw_text_start);
+            //スペースキーを検知 ボールの速さと表示を変更
+            } else if (e.keyCode === 32 && space_pressed === false) {
+                changeBallSpeed();
+            }
+        }
+        function keyUpHandler (e) {
+            if (e.key === 'Right' || e.key === 'ArrowRight') {
+                right_pressed = false;
+            } else if (e.key === 'Left' || e.key === 'ArrowLeft') {
+                left_pressed = false;
+            // Shiftキー終了
+            } else if (e.keyCode === 16) {
+                document.location.reload();
+            }
+        }
+        </script>
+    </body>
+</html>

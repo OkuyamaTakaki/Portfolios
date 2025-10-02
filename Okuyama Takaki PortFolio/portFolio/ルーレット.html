@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ルーレット</title>
+    <script src=".\js\jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <table id="matrix">
+        <caption>ルーレット</caption>
+        <tr id="1"></tr>
+        <tr id="2"></tr>
+        <tr id="3"></tr>
+        <tr id="4"></tr>
+    </table>
+    <div class="btns">
+        <button id="start">スタート</button>
+        <button id="stop">ストップ</button>
+        <button id="reset">リセット</button>
+    </div>
+    <h1 id="testPut"></h1>
+    <script>
+        /* 課題処理を追加 */
+        //20200803-JavaSctipt-12章_12-1_作成者：奥山貴希
+        var setNum = 1;
+        
+        for (var i = 1; i <= 4; i++) {
+            for (var j = 1; j <= 4; j++) {
+                
+                $("#" + i.toString() ).append('<td id=' + (0 - setNum) + '>' + setNum + '</td>');
+                setNum++;
+            }
+        }
+
+        //ルーレットのマス目の識別用、td要素のIDの配列
+        let idNumPool = [-1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12, -13, -14, -15, -16];
+        var i = 0;
+        let rId;
+
+        //前回止まったルーレットのtd要素のID(前回止まったマス目)
+        let lastrId = 'a';
+        var interval;
+        //var lastRumNum;
+
+        var startButton = document.getElementById("start");
+        startButton.addEventListener("click", exeRoulette, false);
+
+        function exeRoulette () {
+            startButton.disabled = true;
+            stopButton.disabled = false;
+            resetButton.disabled = false;
+
+            interval = setInterval(Roulette, 100)
+        }
+        
+        function Roulette () {
+            
+            //ルーレット終了
+            if(idNumPool.length === 0) {
+                console.log("END");
+                return;
+            }
+            
+            //ルーレット実行
+            if (startButton.disabled === true) {
+                $('#' + (lastrId).toString()).removeClass('even');
+                $('#' + (lastrId).toString()).addClass('reset-even');
+                rId = Math.floor((Math.random()*idNumPool.length));
+                
+                $('#' + (lastrId).toString()).removeClass('reset-even');
+                $('#' + (idNumPool[rId].toString()) ).addClass('even');
+                //$('#' + (lastrId).toString()).addClass('reset-even');
+                lastrId = idNumPool[rId];
+            }
+        }
+
+
+        var stopButton = document.getElementById("stop");
+        stopButton.addEventListener("click", stopRoulette, false);
+
+        function stopRoulette () {
+            clearInterval(interval);
+            startButton.disabled = false;
+            stopButton.disabled = true;
+            resetButton.disabled = false;
+
+            //ルーレット終了したかどうか
+            if(idNumPool.length === 1) {
+                startButton.disabled = true;
+                stopButton.disabled = true;
+                resetButton.disabled = false;
+                $('#' + (idNumPool[rId].toString()) ).addClass('after-even');
+                console.log("ENDSTOP");
+                return;
+            }else{
+                startButton.disabled = false;
+                stopButton.disabled = true;
+                resetButton.disabled = false;
+            }
+
+            $('#' + (lastrId).toString()).addClass('after-even');
+
+            //止まったマス目の配列の要素削除
+            idNumPool.splice(rId,1);
+            //初期化して止まったマス目の色を残す処理(止まったクラス名の書き換えをせずそのまま残す)
+            lastrId = 'a';
+        }
+
+        var resetButton = document.getElementById("reset");
+        resetButton.addEventListener("click", resetRoulette, false);
+
+        function resetRoulette () {
+            //今回の課題ではブラウザの機能を利用してリセット
+            location.reload();
+        }
+
+        //ボタン、有効/無効の初期値
+        startButton.disabled = false;
+        stopButton.disabled = true;
+        resetButton.disabled = true;
+
+    </script>
+    <style type="text/css">
+    caption {
+        padding: 5px;
+        font-size: 30px;
+    }
+
+    table {
+        height: 320px;
+    }
+
+    table, .btns {
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    table, td {
+        border: solid 1px;
+        border-spacing: 0px;
+    }
+
+    td {
+        padding: 5px;
+        border: solid 0.5px;
+        text-align: center;
+    }
+
+    .even {
+        background-color: #00a968;
+    }
+
+    .after-even {
+        background-color: gray;
+    }
+
+    .reset-even {
+        background-color: white;
+    }
+
+    .btns{
+        display: flex;
+    }
+
+    #start, #stop, #reset {
+        height: 35px;
+        width: 30%;
+        margin: 15px auto auto auto;
+    }
+    </style>
+</body>
+</html>
