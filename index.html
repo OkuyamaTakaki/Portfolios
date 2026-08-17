@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>奥山貴希 | ポートフォリオ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
@@ -53,7 +56,6 @@
                 <summary>Webアプリケーション制作</summary>
                 <div class="portfolio-content">
                     <p>JavaとSpring Bootを使用して、日記を登録・編集できるWebアプリケーションを制作しています。データベースやログイン認証、入力バリデーションなどの実装にも取り組んでいます。</p>
-                </div>
             </details>
         </section>
 
@@ -73,40 +75,48 @@
                 </div>
             </details>
 
-            <!-- Unityで制作したゲーム作品 -->
-            <details>
+            <!-- Unityroomで公開しているゲーム作品 -->
+            <details class="unity-category">
                 <summary>Unity制作物</summary>
+                <div class="unity-introduction">
+                    <h3>Unityroomで公開中のゲーム</h3>
+                    <p><strong>Unityを学習開始してから約3ヶ月で、すべて完全独学で制作しました。</strong></p>
+                    <p>Unityを使用して制作したゲームを公開しています。実際にプレイしていただけます。</p>
+                    <a href="https://unityroom.com/" target="_blank" rel="noopener noreferrer">Unityroomでゲームを見る</a>
+                </div>
+
                 <div class="portfolio-content">
-                    <details>
-                        <summary>ハイターチャレンジ</summary>
-                        <div class="portfolio-content">
-                            <p>Unityで制作したゲームです。</p>
-                            <p>Unityroomで公開しています。</p>
-                            <a href="https://unityroom.com/games/haitachalleng" target="_blank" rel="noopener noreferrer">Unityroom</a>
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>試作タイルマップゲーム</summary>
-                        <div class="portfolio-content">
-                            <p>Unityで制作したタイルマップを使用した試作ゲームです。</p>
-                            <p>Unityroomで公開しています。</p>
-                            <a href="https://unityroom.com/games/jinseigames" target="_blank" rel="noopener noreferrer">Unityroom</a>
-                        </div>
-                    </details>
-
+                    <!-- Unity作品の代表作品 -->
                     <details>
                         <summary>2D タワーディフェンスゲーム</summary>
                         <div class="portfolio-content">
-                            <p>Unityを使用して制作した2Dタワーディフェンスゲームです。</p>
-                            <p>初めてUnityを独学で使用して個人制作したゲームです。</p>
+                            <p>Unityを学習開始してから約3ヶ月で、完全独学で制作した2Dタワーディフェンスゲームです。</p>
+                            <p>ゲーム制作の経験がない状態から、Unityの使い方やC#によるプログラミングなどを独学で学習し、ひとつのゲームとして完成させました。</p>
                             <p>※パソコンでのプレイを推奨しています。</p>
-                            <a href="https://unityroom.com/games/towerdefens" target="_blank" rel="noopener noreferrer">Unityroom</a>
+                            <a href="https://unityroom.com/games/towerdefens" target="_blank" rel="noopener noreferrer">Unityroomでプレイ</a>
 
                             <!-- タワーディフェンスゲームの紹介動画 -->
                             <div class="image-wrapper">
                                 <iframe src="https://www.youtube.com/embed/KRvtM4-ouuI" title="2Dタワーディフェンスゲーム紹介動画" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
+                        </div>
+                    </details>
+
+                    <!-- Unityで制作したゲーム -->
+                    <details>
+                        <summary>ハイターチャレンジ</summary>
+                        <div class="portfolio-content">
+                            <p>Unityで制作したゲームです。</p>
+                            <a href="https://unityroom.com/games/haitachalleng" target="_blank" rel="noopener noreferrer">Unityroomでプレイ</a>
+                        </div>
+                    </details>
+
+                    <!-- Unityで制作したタイルマップ作品 -->
+                    <details>
+                        <summary>試作タイルマップゲーム</summary>
+                        <div class="portfolio-content">
+                            <p>Unityで制作したタイルマップを使用した試作ゲームです。</p>
+                            <a href="https://unityroom.com/games/jinseigames" target="_blank" rel="noopener noreferrer">Unityroomでプレイ</a>
                         </div>
                     </details>
                 </div>
@@ -116,6 +126,7 @@
             <details>
                 <summary>JavaScript制作物</summary>
                 <div class="portfolio-content">
+                    <!-- JavaScriptで制作したルーレット -->
                     <details>
                         <summary>ルーレット</summary>
                         <div class="portfolio-content">
@@ -128,6 +139,7 @@
                         </div>
                     </details>
 
+                    <!-- JavaScriptで制作したブロック崩しゲーム -->
                     <details>
                         <summary>ブロック崩しゲーム</summary>
                         <div class="portfolio-content">
