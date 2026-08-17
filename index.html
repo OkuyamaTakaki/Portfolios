@@ -40,34 +40,41 @@
         <section id="career">
             <h2>学習・制作経験</h2>
 
-            <h3>プログラミング学習</h3>
-            <p>
-                プログラミングの基礎を学習し、Webサイトやゲームなどの
-                個人制作に取り組んできました。
-            </p>
+            <details>
+                <summary>プログラミング学習</summary>
+                <p>
+                    プログラミングの基礎を学習し、Webサイトやゲームなどの
+                    個人制作に取り組んできました。
+                </p>
+            </details>
 
-            <h3>ゲーム制作</h3>
-            <p>
-                Unityを使用して2Dゲームを個人制作しました。
-                ゲーム制作を通して、プログラムの設計やデバッグ、
-                UI制作などについて学びました。
-            </p>
+            <details>
+                <summary>ゲーム制作</summary>
+                <p>
+                    Unityを使用して2Dゲームを個人制作しました。
+                    ゲーム制作を通して、プログラムの設計やデバッグ、
+                    UI制作などについて学びました。
+                </p>
+            </details>
 
-            <h3>Webアプリケーション制作</h3>
-            <p>
-                JavaとSpring Bootを使用して、日記を登録・編集できる
-                Webアプリケーションを制作しています。
-                データベースやログイン認証、入力バリデーションなどの
-                実装にも取り組んでいます。
-            </p>
+            <details>
+                <summary>Webアプリケーション制作</summary>
+                <p>
+                    JavaとSpring Bootを使用して、日記を登録・編集できる
+                    Webアプリケーションを制作しています。
+                    データベースやログイン認証、入力バリデーションなどの
+                    実装にも取り組んでいます。
+                </p>
+            </details>
         </section>
 
         <section id="portfolio">
             <h2>ポートフォリオ</h2>
 
-            <article class="portFolio">
-                <div>
-                    <h3>Spring Boot 日記Webアプリ</h3>
+            <details>
+                <summary>Spring Boot 日記Webアプリ</summary>
+
+                <div class="portfolio-content">
                     <p>
                         JavaとSpring Bootを使用して制作している日記Webアプリです。
                     </p>
@@ -78,73 +85,84 @@
                     <p>
                         使用技術：Java / Spring Boot / Thymeleaf / H2 / JavaScript
                     </p>
-                    <a href="https://okuyamatakaki.github.io/Portfolios/">
+
+                    <a href="日記アプリのURL">
                         公開サイト
                     </a>
-                </div>
-            </article>
 
-            <article class="portFolio">
-                <div>
-                    <h3>2Dタワーディフェンスゲーム</h3>
+                    <a href="日記アプリのGitHub URL">
+                        GitHub
+                    </a>
+                </div>
+            </details>
+
+            <details>
+                <summary>2Dタワーディフェンスゲーム</summary>
+
+                <div class="portfolio-content">
                     <p>
                         Unityを使用して制作した2Dタワーディフェンスゲームです。
                     </p>
                     <p>
                         ※Windowsで動作を検証しています。
                     </p>
+
                     <a href="https://drive.google.com/drive/folders/1TTO4eZXew4w51t9nyz4ZEteC_7W7KNRn?usp=drive_link">
                         ゲームのダウンロードはこちら
                     </a>
-                </div>
 
-                <div class="image-wrapper">
-                    <iframe
-                        src="https://www.youtube.com/embed/KRvtM4-ouuI"
-                        title="2Dタワーディフェンスゲーム紹介動画"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                    <div class="image-wrapper">
+                        <iframe
+                            src="https://www.youtube.com/embed/KRvtM4-ouuI"
+                            title="2Dタワーディフェンスゲーム紹介動画"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
                 </div>
-            </article>
+            </details>
 
-            <article class="portFolio">
-                <div>
-                    <h3>ルーレット</h3>
+            <details>
+                <summary>ルーレット</summary>
+
+                <div class="portfolio-content">
                     <p>
                         JavaScriptを使用して制作したルーレットです。
                     </p>
                     <p>
                         ※パソコンでの操作を前提としています。
                     </p>
+
                     <a href="roulette/index.html">
                         ルーレットはこちら
                     </a>
-                </div>
 
-                <div class="image-wrapper">
-                    <img src="image/ルーレット.png" alt="ルーレット">
+                    <div class="image-wrapper">
+                        <img src="image/ルーレット.png" alt="ルーレット">
+                    </div>
                 </div>
-            </article>
+            </details>
 
-            <article class="portFolio">
-                <div>
-                    <h3>ブロック崩しゲーム</h3>
+            <details>
+                <summary>ブロック崩しゲーム</summary>
+
+                <div class="portfolio-content">
                     <p>
                         JavaScriptを使用して制作したブロック崩しゲームです。
                     </p>
                     <p>
                         ※パソコンでの操作を前提としています。
                     </p>
+
                     <a href="breakout/index.html">
                         ブロック崩しゲームはこちら
                     </a>
-                </div>
 
-                <div class="image-wrapper">
-                    <img src="image/ブロック崩しゲーム.png" alt="ブロック崩しゲーム">
+                    <div class="image-wrapper">
+                        <img src="image/ブロック崩しゲーム.png" alt="ブロック崩しゲーム">
+                    </div>
                 </div>
-            </article>
+            </details>
         </section>
     </main>
 
