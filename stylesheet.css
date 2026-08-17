@@ -1,0 +1,135 @@
+/* ポートフォリオサイト 共通スタイル */
+
+* {
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #2f2a20;
+    line-height: 1.7;
+}
+
+header,
+main,
+footer {
+    margin: 12px 0;
+    border: solid 1px white;
+    border-radius: 5px;
+    background-color: #7d7c7c;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    padding: 12px;
+}
+
+section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #1d1e1e;
+}
+
+section:last-child {
+    margin-bottom: 0;
+}
+
+h2 {
+    margin: 0 0 15px;
+    padding: 8px;
+    border-top: solid 2px white;
+    border-radius: 5px;
+    background-color: #474747;
+}
+
+h3 {
+    margin: 20px 0 10px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+ul {
+    margin: 0;
+    padding-left: 25px;
+}
+
+.portFolio {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #2f2a20;
+}
+
+.portFolio > div {
+    flex: 1;
+    text-align: center;
+}
+
+.image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrapper img,
+.image-wrapper iframe {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: solid 1px white;
+    border-radius: 5px;
+    background-color: #474747;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    padding: 15px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        width: 95%;
+    }
+
+    .portFolio {
+        flex-direction: column;
+    }
+
+    .portFolio > div {
+        width: 100%;
+    }
+}
