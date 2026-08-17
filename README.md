@@ -14,6 +14,8 @@ JavaとSpring Bootを使用して制作した日記Webアプリです。
 
 ログイン機能、日記の登録・編集、データベースへの保存、入力バリデーションなどを実装しています。
 
+使用技術：
+
 - Java
 - Spring Boot
 - Thymeleaf
@@ -24,11 +26,14 @@ JavaとSpring Bootを使用して制作した日記Webアプリです。
 
 [GitHubリポジトリを見る](https://github.com/OkuyamaTakaki/springboot-diary-app)
 
-### Unity制作物
+### Unityroomで公開中のゲーム
 
-Unityを学習開始してから約3ヶ月で、すべて完全独学で制作したゲーム作品です。
+**Unityを学習開始してから約3ヶ月で、すべて完全独学で制作しました。**
 
-Unityroomで実際にプレイできます。
+趣味の一環として、ゲームの個人制作に取り組んでおります。  
+Unityroomにて実際にプレイしていただけます。
+
+[Unityroomでゲームを見る](https://unityroom.com/)
 
 - [2D タワーディフェンスゲーム](https://unityroom.com/games/towerdefens)
 - [ハイターチャレンジ](https://unityroom.com/games/haitachalleng)
