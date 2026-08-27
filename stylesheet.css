@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #2f2a20;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    line-height: 1.7;
+}
+
+header, main, footer {
+    margin: 12px 0;
+    border: 1px solid white;
+    border-radius: 12px;
+    background-color: #7d7c7c;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+main {
+    padding: 12px;
+}
+
+section {
+    margin-bottom: 20px;
+    padding: 18px;
+    border-radius: 10px;
+    background-color: #1d1e1e;
+}
+
+section:last-child {
+    margin-bottom: 0;
+}
+
+h2 {
+    margin: 0 0 18px;
+    padding: 10px 14px;
+    border-top: 2px solid white;
+    border-radius: 8px;
+    background-color: #474747;
+    font-size: 1.5em;
+}
+
+h3 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+}
+
+p {
+    margin: 10px 0;
+}
+
+ul {
+    margin: 0;
+    padding-left: 25px;
+}
+
+/* detailsはカテゴリと作品の階層を表現するために使用 */
+details {
+    margin: 10px 0;
+    border: 1px solid #888;
+    border-radius: 8px;
+    background-color: #2f2a20;
+    overflow: hidden;
+}
+
+summary {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-weight: 700;
+    list-style-position: inside;
+}
+
+summary::marker {
+    font-size: 0.8em;
+}
+
+summary:hover {
+    background-color: #555;
+}
+
+details[open] > summary {
+    border-bottom: 1px solid #777;
+}
+
+/* ポートフォリオの大分類 */
+#portfolio > details > summary {
+    background-color: #474747;
+    font-size: 1.35em;
+}
+
+/* Unity制作物の紹介エリア */
+.unity-introduction {
+    margin: 12px;
+    padding: 16px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    background-color: #363636;
+}
+
+.unity-introduction h3 {
+    margin-bottom: 8px;
+}
+
+.unity-introduction strong {
+    font-weight: 700;
+}
+
+/* Unity制作物・JavaScript制作物の作品一覧 */
+#portfolio > details > .portfolio-content {
+    padding: 12px;
+    background-color: #242424;
+}
+
+/* カテゴリ内の個別作品 */
+#portfolio > details > .portfolio-content > details {
+    margin: 8px 0;
+    border-color: #666;
+    background-color: #1d1e1e;
+}
+
+#portfolio > details > .portfolio-content > details > summary {
+    background-color: #3b3b3b;
+    font-size: 1.1em;
+}
+
+/* 個別作品の詳細 */
+.portfolio-content {
+    padding: 15px;
+}
+
+/* 外部サイト・作品ページへのリンク */
+.portfolio-content a {
+    display: inline-block;
+    margin: 8px 6px 8px 0;
+    padding: 7px 14px;
+    border: 1px solid white;
+    border-radius: 8px;
+    background-color: #474747;
+    text-decoration: none;
+}
+
+.portfolio-content a:hover {
+    background-color: #666;
+    text-decoration: underline;
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.image-wrapper img,
+.image-wrapper iframe {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+footer {
+    padding: 15px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* スマートフォンでは画面幅を広く使う */
+@media screen and (max-width: 768px) {
+    body {
+        width: 95%;
+    }
+
+    main {
+        padding: 8px;
+    }
+
+    section {
+        padding: 12px;
+    }
+
+    #portfolio > details > summary {
+        font-size: 1.2em;
+    }
+
+    .unity-introduction {
+        margin: 8px;
+        padding: 12px;
+    }
+}
