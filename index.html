@@ -3,22 +3,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#10221c">
     <meta name="description" content="奥山貴希のポートフォリオ。Java・Spring BootによるWebアプリケーションと、Unity・JavaScriptによるゲーム作品を紹介しています。">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
     <meta property="og:title" content="奥山貴希 | Portfolio">
     <meta property="og:description" content="Webアプリケーションとゲームの制作ポートフォリオ。">
-    <meta property="og:image" content="image/og.png">
+    <meta property="og:url" content="https://okuyamatakaki.github.io/Portfolios/">
+    <meta property="og:image" content="https://okuyamatakaki.github.io/Portfolios/assets/images/og.png">
+    <meta property="og:image:alt" content="奥山貴希 Portfolio - Web Application / Game Development">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="奥山貴希 | Portfolio">
     <meta name="twitter:description" content="Webアプリケーションとゲームの制作ポートフォリオ。">
-    <meta name="twitter:image" content="image/og.png">
+    <meta name="twitter:image" content="https://okuyamatakaki.github.io/Portfolios/assets/images/og.png">
+    <meta name="twitter:image:alt" content="奥山貴希 Portfolio - Web Application / Game Development">
     <title>奥山貴希 | ポートフォリオ</title>
+    <link rel="canonical" href="https://okuyamatakaki.github.io/Portfolios/">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body id="top">
+    <a class="skip-link" href="#main-content">本文へ移動</a>
     <header class="site-header">
         <a class="site-logo" href="#top" aria-label="奥山貴希 ポートフォリオ トップへ">OT</a>
         <nav aria-label="メインナビゲーション">
@@ -27,7 +37,7 @@
             <a href="https://github.com/OkuyamaTakaki" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
     </header>
-    <main id="top">
+    <main id="main-content">
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-content">
                 <p class="eyebrow">PORTFOLIO 2026</p>
@@ -39,6 +49,7 @@
                     <a class="button button-secondary" href="https://github.com/OkuyamaTakaki" target="_blank" rel="noopener noreferrer">GitHubを見る<span aria-hidden="true">↗</span></a>
                 </div>
             </div>
+            <!-- 掲載作品数を変更した場合は、このカウントも更新する。 -->
             <div class="hero-visual" aria-hidden="true">
                 <span class="hero-number">06</span>
                 <span class="hero-label">PROJECTS</span>
@@ -88,7 +99,8 @@
             </article>
             <article class="project project-media">
                 <div class="media-frame video-frame">
-                    <iframe src="https://www.youtube.com/embed/KRvtM4-ouuI" title="2Dタワーディフェンスゲームの紹介動画" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <!-- Cookie送信を抑えるYouTubeのプライバシー強化モードを使用する。 -->
+                    <iframe src="https://www.youtube-nocookie.com/embed/KRvtM4-ouuI" title="2Dタワーディフェンスゲームの紹介動画" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="project-body">
                     <div class="project-meta">
@@ -108,66 +120,99 @@
                     <p class="project-note">PCでのプレイを推奨しています。</p>
                 </div>
             </article>
-            <div class="subsection-heading">
-                <h3>JavaScript Works</h3>
-                <p>ブラウザ上で動く仕組みを、基本的なJavaScriptから組み立てた作品です。</p>
-            </div>
-            <div class="project-grid">
-                <article class="project-card">
-                    <div class="media-frame">
-                        <img src="image/ルーレット.png" alt="1から16までの数字を配置したルーレット画面" loading="lazy" width="549" height="661">
-                    </div>
-                    <div class="card-body">
-                        <div class="project-meta"><span class="category">JAVASCRIPT</span><span>01</span></div>
-                        <h3>ルーレット</h3>
-                        <p>スタート・ストップ・リセットの操作で、数字を選出するルーレットです。</p>
-                    </div>
-                </article>
-                <article class="project-card">
-                    <div class="media-frame media-frame-dark">
-                        <img src="image/ブロック崩しゲーム.png" alt="色付きのブロックとボールを表示したブロック崩しゲーム画面" loading="lazy" width="723" height="483">
-                    </div>
-                    <div class="card-body">
-                        <div class="project-meta"><span class="category">JAVASCRIPT</span><span>02</span></div>
-                        <h3>ブロック崩しゲーム</h3>
-                        <p>キーボード操作でパドルを動かし、ボールを打ち返してブロックを崩すゲームです。</p>
-                    </div>
-                </article>
-            </div>
-            <div class="subsection-heading">
-                <h3>More Unity Works</h3>
-                <p>試作と公開を重ねながら、ゲーム制作の幅を広げています。</p>
-            </div>
-            <div class="compact-grid">
-                <article class="compact-card">
-                    <span class="compact-number" aria-hidden="true">03</span>
-                    <div><p class="category">UNITY GAME</p><h3>ハイターチャレンジ</h3><p>Unityで制作し、ブラウザで公開しているゲーム作品です。</p></div>
-                    <a href="https://unityroom.com/games/haitachalleng" target="_blank" rel="noopener noreferrer" aria-label="ハイターチャレンジをプレイ"><span aria-hidden="true">↗</span></a>
-                </article>
-                <article class="compact-card">
-                    <span class="compact-number" aria-hidden="true">04</span>
-                    <div><p class="category">UNITY PROTOTYPE</p><h3>試作タイルマップゲーム</h3><p>タイルマップを用いたゲーム表現を試したプロトタイプです。</p></div>
-                    <a href="https://unityroom.com/games/jinseigames" target="_blank" rel="noopener noreferrer" aria-label="試作タイルマップゲームをプレイ"><span aria-hidden="true">↗</span></a>
-                </article>
-            </div>
+            <section class="works-group" aria-labelledby="javascript-works-title">
+                <div class="subsection-heading">
+                    <h3 id="javascript-works-title">JavaScript Works</h3>
+                    <p>ブラウザ上で動く仕組みを、基本的なJavaScriptから組み立てた作品です。</p>
+                </div>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <div class="media-frame">
+                            <img src="assets/images/roulette.png" alt="1から16までの数字を配置したルーレット画面" loading="lazy" decoding="async" width="549" height="661">
+                        </div>
+                        <div class="card-body">
+                            <div class="project-meta">
+                                <span class="category">JAVASCRIPT</span>
+                                <span>01</span>
+                            </div>
+                            <h4>ルーレット</h4>
+                            <p>スタート・ストップ・リセットの操作で、数字を選出するルーレットです。</p>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <div class="media-frame media-frame-dark">
+                            <img src="assets/images/block-breaker.png" alt="色付きのブロックとボールを表示したブロック崩しゲーム画面" loading="lazy" decoding="async" width="723" height="483">
+                        </div>
+                        <div class="card-body">
+                            <div class="project-meta">
+                                <span class="category">JAVASCRIPT</span>
+                                <span>02</span>
+                            </div>
+                            <h4>ブロック崩しゲーム</h4>
+                            <p>キーボード操作でパドルを動かし、ボールを打ち返してブロックを崩すゲームです。</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <section class="works-group" aria-labelledby="more-unity-works-title">
+                <div class="subsection-heading">
+                    <h3 id="more-unity-works-title">More Unity Works</h3>
+                    <p>試作と公開を重ねながら、ゲーム制作の幅を広げています。</p>
+                </div>
+                <div class="compact-grid">
+                    <article class="compact-card">
+                        <span class="compact-number" aria-hidden="true">03</span>
+                        <div>
+                            <p class="category">UNITY GAME</p>
+                            <h4>ハイターチャレンジ</h4>
+                            <p>Unityで制作し、ブラウザで公開しているゲーム作品です。</p>
+                        </div>
+                        <a href="https://unityroom.com/games/haitachalleng" target="_blank" rel="noopener noreferrer" aria-label="ハイターチャレンジをプレイ"><span aria-hidden="true">↗</span></a>
+                    </article>
+                    <article class="compact-card">
+                        <span class="compact-number" aria-hidden="true">04</span>
+                        <div>
+                            <p class="category">UNITY PROTOTYPE</p>
+                            <h4>試作タイルマップゲーム</h4>
+                            <p>タイルマップを用いたゲーム表現を試したプロトタイプです。</p>
+                        </div>
+                        <a href="https://unityroom.com/games/jinseigames" target="_blank" rel="noopener noreferrer" aria-label="試作タイルマップゲームをプレイ"><span aria-hidden="true">↗</span></a>
+                    </article>
+                </div>
+            </section>
         </section>
         <section class="skills-section" id="skills" aria-labelledby="skills-title">
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow eyebrow-light">TECHNOLOGY</p>
+                    <p class="eyebrow">TECHNOLOGY</p>
                     <h2 id="skills-title">使用技術</h2>
                 </div>
                 <p>Webアプリケーションとゲーム、両方の制作を通じて実装力を磨いています。</p>
             </div>
             <div class="skills-grid">
-                <article><span aria-hidden="true">01</span><h3>Backend</h3><p>Java / Spring Boot / H2 Database</p></article>
-                <article><span aria-hidden="true">02</span><h3>Frontend</h3><p>HTML / CSS / JavaScript / Thymeleaf</p></article>
-                <article><span aria-hidden="true">03</span><h3>Game</h3><p>Unity / 2D / WebGL</p></article>
+                <article>
+                    <span aria-hidden="true">01</span>
+                    <h3>Backend</h3>
+                    <p>Java / Spring Boot / H2 Database</p>
+                </article>
+                <article>
+                    <span aria-hidden="true">02</span>
+                    <h3>Frontend</h3>
+                    <p>HTML / CSS / JavaScript / Thymeleaf</p>
+                </article>
+                <article>
+                    <span aria-hidden="true">03</span>
+                    <h3>Game</h3>
+                    <p>Unity / 2D / WebGL</p>
+                </article>
             </div>
         </section>
     </main>
     <footer>
-        <div><p class="footer-name">奥山 貴希</p><p>Web Application / Game Development</p></div>
+        <div>
+            <p class="footer-name">奥山 貴希</p>
+            <p>Web Application / Game Development</p>
+        </div>
         <a href="#top">ページ上部へ<span aria-hidden="true">↑</span></a>
     </footer>
 </body>

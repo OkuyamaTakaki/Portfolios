@@ -9,7 +9,7 @@
     --color-accent-dark: #a8d638;
     --color-line: #d8dfd5;
     --shadow-card: 0 18px 60px rgb(16 34 28 / 8%);
-    --font-sans: "M PLUS Rounded 1c", sans-serif;
+    --font-sans: "M PLUS Rounded 1c", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
     --content-width: 1120px;
 }
 
@@ -46,13 +46,32 @@ a {
 p,
 h1,
 h2,
-h3 {
+h3,
+h4 {
     margin-top: 0;
 }
 
 a:focus-visible {
     outline: 3px solid var(--color-accent-dark);
     outline-offset: 4px;
+}
+
+/* キーボード操作時だけ表示し、本文へ直接移動できるようにする。 */
+.skip-link {
+    position: fixed;
+    z-index: 100;
+    top: 12px;
+    left: 12px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    font-weight: 800;
+    transform: translateY(-160%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
 }
 
 /* 主要セクションの表示幅を揃え、ページ全体の基準線を統一する。 */
@@ -130,10 +149,6 @@ footer {
 
 .eyebrow-dark {
     color: #64800e;
-}
-
-.eyebrow-light {
-    color: var(--color-accent);
 }
 
 .hero h1 {
@@ -338,8 +353,8 @@ footer {
 }
 
 .project h3,
-.project-card h3,
-.compact-card h3 {
+.project-card h4,
+.compact-card h4 {
     color: var(--color-ink);
     font-weight: 800;
     letter-spacing: -0.045em;
@@ -515,7 +530,7 @@ footer {
     margin-bottom: 16px;
 }
 
-.project-card h3 {
+.project-card h4 {
     margin-bottom: 12px;
     font-size: clamp(1.5rem, 3vw, 2.1rem);
 }
@@ -550,7 +565,7 @@ footer {
     font-weight: 800;
 }
 
-.compact-card h3 {
+.compact-card h4 {
     margin: 18px 0 12px;
     font-size: 1.45rem;
     line-height: 1.35;
