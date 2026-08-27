@@ -3,99 +3,172 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="奥山貴希のポートフォリオ。Java・Spring BootによるWebアプリケーションと、Unity・JavaScriptによるゲーム作品を紹介しています。">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="奥山貴希 | Portfolio">
+    <meta property="og:description" content="Webアプリケーションとゲームの制作ポートフォリオ。">
+    <meta property="og:image" content="image/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="奥山貴希 | Portfolio">
+    <meta name="twitter:description" content="Webアプリケーションとゲームの制作ポートフォリオ。">
+    <meta name="twitter:image" content="image/og.png">
     <title>奥山貴希 | ポートフォリオ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-    <header>
-        <h1>ポートフォリオ</h1>
+    <header class="site-header">
+        <a class="site-logo" href="#top" aria-label="奥山貴希 ポートフォリオ トップへ">OT</a>
+        <nav aria-label="メインナビゲーション">
+            <a href="#works">制作物</a>
+            <a href="#skills">スキル</a>
+            <a href="https://github.com/OkuyamaTakaki" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
     </header>
-
-    <main>
-        <section id="portfolio">
-            <h2>制作物</h2>
-
-            <details>
-                <summary>Spring Boot 日記Webアプリ</summary>
-                <div class="portfolio-content">
-                    <p>Java / Spring Bootで制作した日記Webアプリです。</p>
-                    <p>ログイン、日記の登録・編集、データベース保存、入力バリデーションなどを実装しています。</p>
-                    <p>使用技術：Java / Spring Boot / Thymeleaf / H2 / JavaScript</p>
-                    <a href="https://springboot-diary-app.onrender.com/login" target="_blank" rel="noopener noreferrer">公開サイト</a>
-                    <a href="https://github.com/OkuyamaTakaki/springboot-diary-app" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="eyebrow">PORTFOLIO 2026</p>
+                <h1 id="hero-title">奥山 貴希</h1>
+                <p class="hero-copy">Webアプリケーションとゲームを、<br>学びながら、動く形へ。</p>
+                <p class="hero-description">Java / Spring Bootを用いたWeb開発から、Unity・JavaScriptによるゲーム制作まで。実装した機能と制作過程が伝わる作品を掲載しています。</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#works">制作物を見る</a>
+                    <a class="button button-secondary" href="https://github.com/OkuyamaTakaki" target="_blank" rel="noopener noreferrer">GitHubを見る<span aria-hidden="true">↗</span></a>
                 </div>
-            </details>
-
-            <details class="unity-category">
-                <summary>Unity制作物</summary>
-                <div class="portfolio-content">
-                    <p>Unityで制作したゲームです。</p>
-
-                    <details>
-                        <summary>2D タワーディフェンスゲーム</summary>
-                        <div class="portfolio-content">
-                            <p>Unityを学習開始してから約3ヶ月で、完全独学で制作しました。</p>
-                            <p>※パソコンでのプレイを推奨しています。</p>
-                            <a href="https://unityroom.com/games/towerdefens" target="_blank" rel="noopener noreferrer">Unityroomでプレイ</a>
-
-                            <div class="image-wrapper">
-                                <iframe src="https://www.youtube.com/embed/KRvtM4-ouuI" title="2Dタワーディフェンスゲーム紹介動画" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>ハイターチャレンジ</summary>
-                        <div class="portfolio-content">
-                            <a href="https://unityroom.com/games/haitachalleng" target="_blank" rel="noopener noreferrer">Unityroomでプレイ</a>
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>試作タイルマップゲーム</summary>
-                        <div class="portfolio-content">
-                            <a href="https://unityroom.com/games/jinseigames" target="_blank" rel="noopener noreferrer">Unityroomでプレイ</a>
-                        </div>
-                    </details>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <span class="hero-number">06</span>
+                <span class="hero-label">PROJECTS</span>
+                <div class="hero-grid">
+                    <span>WEB</span>
+                    <span>GAME</span>
+                    <span>JAVA</span>
+                    <span>UNITY</span>
                 </div>
-            </details>
-
-            <details>
-                <summary>JavaScript制作物</summary>
-                <div class="portfolio-content">
-                    <details>
-                        <summary>ルーレット</summary>
-                        <div class="portfolio-content">
-                            <p>JavaScriptで制作したルーレットです。</p>
-                            <a href="roulette/index.html">ルーレットを開く</a>
-
-                            <div class="image-wrapper">
-                                <img src="image/ルーレット.png" alt="ルーレットの画面">
-                            </div>
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>ブロック崩しゲーム</summary>
-                        <div class="portfolio-content">
-                            <p>JavaScriptで制作したブロック崩しゲームです。</p>
-                            <a href="breakout/index.html">ブロック崩しゲームを開く</a>
-
-                            <div class="image-wrapper">
-                                <img src="image/ブロック崩しゲーム.png" alt="ブロック崩しゲームの画面">
-                            </div>
-                        </div>
-                    </details>
+            </div>
+        </section>
+        <section class="works-section" id="works" aria-labelledby="works-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow eyebrow-dark">SELECTED WORKS</p>
+                    <h2 id="works-title">制作物</h2>
                 </div>
-            </details>
+                <p>「何を作ったか」だけでなく、実装した機能や使用技術がひと目で分かるようにまとめています。</p>
+            </div>
+            <article class="project project-featured">
+                <div class="project-index" aria-hidden="true">01</div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="category">WEB APPLICATION</span>
+                        <span>Java / Spring Boot</span>
+                    </div>
+                    <h3>Spring Boot<br>日記Webアプリ</h3>
+                    <p class="project-lead">アカウントごとに日記を記録・管理できる、データベース連携のWebアプリケーションです。</p>
+                    <div class="feature-list" aria-label="主な実装機能">
+                        <div><strong>01</strong><span>ログイン</span></div>
+                        <div><strong>02</strong><span>日記の登録・編集</span></div>
+                        <div><strong>03</strong><span>DBへの保存</span></div>
+                        <div><strong>04</strong><span>入力値の検証</span></div>
+                    </div>
+                    <ul class="tech-list" aria-label="使用技術">
+                        <li>Java</li>
+                        <li>Spring Boot</li>
+                        <li>Thymeleaf</li>
+                        <li>H2 Database</li>
+                        <li>JavaScript</li>
+                    </ul>
+                    <div class="project-links">
+                        <a class="button button-dark" href="https://springboot-diary-app.onrender.com/login" target="_blank" rel="noopener noreferrer">公開サイト<span aria-hidden="true">↗</span></a>
+                        <a class="text-link" href="https://github.com/OkuyamaTakaki/springboot-diary-app" target="_blank" rel="noopener noreferrer">ソースコードを見る<span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </article>
+            <article class="project project-media">
+                <div class="media-frame video-frame">
+                    <iframe src="https://www.youtube.com/embed/KRvtM4-ouuI" title="2Dタワーディフェンスゲームの紹介動画" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <span class="category">UNITY GAME</span>
+                        <span>独学約3ヶ月で制作</span>
+                    </div>
+                    <h3>2D タワー<br>ディフェンスゲーム</h3>
+                    <p class="project-lead">ユニットを配置し、迫る敵から拠点を守るブラウザゲーム。Unityの学習開始から約3ヶ月で完成・公開しました。</p>
+                    <ul class="tech-list" aria-label="使用技術">
+                        <li>Unity</li>
+                        <li>2D</li>
+                        <li>WebGL</li>
+                    </ul>
+                    <div class="project-links">
+                        <a class="button button-dark" href="https://unityroom.com/games/towerdefens" target="_blank" rel="noopener noreferrer">ゲームをプレイ<span aria-hidden="true">↗</span></a>
+                    </div>
+                    <p class="project-note">PCでのプレイを推奨しています。</p>
+                </div>
+            </article>
+            <div class="subsection-heading">
+                <h3>JavaScript Works</h3>
+                <p>ブラウザ上で動く仕組みを、基本的なJavaScriptから組み立てた作品です。</p>
+            </div>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="media-frame">
+                        <img src="image/ルーレット.png" alt="1から16までの数字を配置したルーレット画面" loading="lazy" width="549" height="661">
+                    </div>
+                    <div class="card-body">
+                        <div class="project-meta"><span class="category">JAVASCRIPT</span><span>01</span></div>
+                        <h3>ルーレット</h3>
+                        <p>スタート・ストップ・リセットの操作で、数字を選出するルーレットです。</p>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="media-frame media-frame-dark">
+                        <img src="image/ブロック崩しゲーム.png" alt="色付きのブロックとボールを表示したブロック崩しゲーム画面" loading="lazy" width="723" height="483">
+                    </div>
+                    <div class="card-body">
+                        <div class="project-meta"><span class="category">JAVASCRIPT</span><span>02</span></div>
+                        <h3>ブロック崩しゲーム</h3>
+                        <p>キーボード操作でパドルを動かし、ボールを打ち返してブロックを崩すゲームです。</p>
+                    </div>
+                </article>
+            </div>
+            <div class="subsection-heading">
+                <h3>More Unity Works</h3>
+                <p>試作と公開を重ねながら、ゲーム制作の幅を広げています。</p>
+            </div>
+            <div class="compact-grid">
+                <article class="compact-card">
+                    <span class="compact-number" aria-hidden="true">03</span>
+                    <div><p class="category">UNITY GAME</p><h3>ハイターチャレンジ</h3><p>Unityで制作し、ブラウザで公開しているゲーム作品です。</p></div>
+                    <a href="https://unityroom.com/games/haitachalleng" target="_blank" rel="noopener noreferrer" aria-label="ハイターチャレンジをプレイ"><span aria-hidden="true">↗</span></a>
+                </article>
+                <article class="compact-card">
+                    <span class="compact-number" aria-hidden="true">04</span>
+                    <div><p class="category">UNITY PROTOTYPE</p><h3>試作タイルマップゲーム</h3><p>タイルマップを用いたゲーム表現を試したプロトタイプです。</p></div>
+                    <a href="https://unityroom.com/games/jinseigames" target="_blank" rel="noopener noreferrer" aria-label="試作タイルマップゲームをプレイ"><span aria-hidden="true">↗</span></a>
+                </article>
+            </div>
+        </section>
+        <section class="skills-section" id="skills" aria-labelledby="skills-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow eyebrow-light">TECHNOLOGY</p>
+                    <h2 id="skills-title">使用技術</h2>
+                </div>
+                <p>Webアプリケーションとゲーム、両方の制作を通じて実装力を磨いています。</p>
+            </div>
+            <div class="skills-grid">
+                <article><span aria-hidden="true">01</span><h3>Backend</h3><p>Java / Spring Boot / H2 Database</p></article>
+                <article><span aria-hidden="true">02</span><h3>Frontend</h3><p>HTML / CSS / JavaScript / Thymeleaf</p></article>
+                <article><span aria-hidden="true">03</span><h3>Game</h3><p>Unity / 2D / WebGL</p></article>
+            </div>
         </section>
     </main>
-
     <footer>
-        <p>Portfolio</p>
+        <div><p class="footer-name">奥山 貴希</p><p>Web Application / Game Development</p></div>
+        <a href="#top">ページ上部へ<span aria-hidden="true">↑</span></a>
     </footer>
 </body>
 </html>
