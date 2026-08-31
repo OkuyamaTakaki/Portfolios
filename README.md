@@ -1,65 +1,121 @@
-# Portfolio
+# 奥山貴希 ポートフォリオ
 
-奥山貴希のポートフォリオサイトです。公開先は <https://okuyamatakaki.github.io/Portfolios/> です。
+WebアプリとUnity作品を、短い説明で一覧できる1ページのポートフォリオサイトです。
 
-## フォルダ構成
+- 公開ページ: <https://okuyamatakaki.github.io/Portfolios/>
+- 掲載内容: Spring Boot日記アプリ、Unityゲーム・試作
+- 入口: `index.html`
+- デザイン: `assets/css/style.css`
+- 日英切替: `assets/js/localization.js`
 
-```text
-Portfolios/
-├─ index.html              # ページ本文、作品情報、外部リンク、SEO設定
-├─ README.md               # 更新・確認手順
-└─ assets/
-   ├─ css/
-   │  └─ style.css         # デザイン、レスポンシブ、アクセシビリティ
-   └─ images/
-      ├─ block-breaker.png # ブロック崩しゲーム画面
-      ├─ favicon.svg       # ブラウザタブ用のOTロゴ
-      ├─ og.png            # SNS共有画像
-      └─ roulette.png      # ルーレット画面
-```
+## 再開するとき
 
-## 更新時の要点
+このリポジトリ直下が編集用の正本です。iCloudのコピーや公開ページを直接編集元にしません。
 
-- 作品名、説明、リンク、技術一覧は `index.html` を更新する。
-- 作品数を変更したら、ヒーロー右側の `06 PROJECTS` も更新する。
-- 画像は `assets/images/` に英小文字とハイフンのファイル名で追加し、`alt`、`width`、`height` を設定する。
-- デザイン変更は `assets/css/style.css` にまとめ、既存のCSS変数とレスポンシブ指定を優先して使う。
-- 外部リンクを新しいタブで開く場合は、`target="_blank"` と `rel="noopener noreferrer"` をセットで指定する。
-- パスワード、APIキー、個人情報、開発用の設定ファイルは配置しない。
+1. このREADMEと `Docs/THIRD_PARTY_NOTICES.md` を読み、公開前の未解決事項を確認する。
+2. 作品内容は `index.html`、日英文言は `assets/js/localization.js`、見た目は `assets/css/style.css` を編集する。
+3. `node scripts/validate-site.js` を実行する。
+4. ローカルサーバーで日本語・Englishと3画面幅を目視確認する。
+5. `git diff` で意図した変更だけか確認してからコミットする。
+
+公開ページはGitHubの `main` ブランチをpushしたときに更新されます。ローカルコミットだけでは公開ページは変わりません。
+
+## 主な更新場所
+
+| 目的 | ファイル |
+| --- | --- |
+| 作品名・説明・リンク・SEO | `index.html` |
+| 色・文字・余白・レスポンシブ表示 | `assets/css/style.css` |
+| 日本語・Englishの表示文言とfallback | `assets/js/localization.js` |
+| 作品画像・OGP・ファビコン | `assets/images/` |
+| ローカライズ静的検査 | `scripts/validate-localization.js` |
+| サイト全体の静的検査 | `scripts/validate-site.js` |
+| 素材・ライセンス台帳 | `Docs/THIRD_PARTY_NOTICES.md` |
+
+作品数を変更した場合は、画面上部の `06` と作品数表示も合わせて更新します。外部リンクを新しいタブで開く場合は、`target="_blank"` と `rel="noopener noreferrer"` をセットで指定します。
+
+## 共通化の方針
+
+共通化するのは、同じ意味と変更理由を持つ範囲だけです。
+
+- 色・書体・共通幅はCSS変数に集約し、8pxを基準にした余白と44px以上の操作領域を画面全体で共有します。
+- ボタン、カード、見出し、フォーカス表示、レスポンシブ規則は共通クラスで管理します。
+- CSSは「構造と操作性」「INDUSTRIAL SKIN（作品固有の表現）」「レスポンシブ」の順に分け、レイアウト変更と外観変更を切り分けます。
+- 言語の選択・保存・fallbackは共通処理にし、作品固有の名称・説明・リンクはこのサイトの翻訳表とHTMLに残します。
+- 他プロジェクトの作品データ、画像、公開設定、ゲームコードは共有フォルダー化しません。再利用する場合も、検証済みの考え方や小さな仕組みに限定します。
+
+表示の流れは `index.html` の日本語初期表示 → `localization.js` の言語選択と文言差し替え → `style.css` の表示調整です。外部ライブラリやビルド処理はありません。
+
+## 日本語 / English
+
+- ヘッダーの切替は最初の画面から操作でき、各ボタンは44px以上のタップ領域を持ちます。
+- 選択言語はlocalStorageの `portfolio.language` に保存します。
+- 保存がなければブラウザの日本語・英語設定を使い、それ以外の言語環境ではEnglishを選びます。言語情報を取得できない場合と欠落キーのfallbackは日本語です。
+- 表示文言、メタデータ、画像alt、iframe title、aria-labelは `localization.js` の言語表で管理します。作品名と技術名は固有名として必要な範囲で維持します。
+- 日記アプリの機能一覧は「主な機能を見る / View key features」で開き、最初の画面へ説明を詰め込みすぎない構成です。
+- 実行時の欠落・未使用キーはコンソールと `window.__portfolioI18nDiagnostics` で確認できます。
+
+## 画像の状態
+
+- `og-industrial.png`: 現在使用中のSNS共有画像です。来歴確認が終わるまで新しい公開更新には使用しません。
+- `roulette.png`: ルーレット作品の画像です。
+- `favicon.svg`: ブラウザタブ用のOTロゴです。
+- `og.png`: 現在は参照されていない旧SNS共有画像です。削除候補ですが、まだ削除していません。
+- `block-breaker.png`: SHIFT BREAKER欄で使用中の旧ブロック崩し画像です。作品に合う画像への差し替え候補です。
+
+同一内容の重複画像はありません。
+
+## 著作権・素材の確認
+
+素材、フォント、外部サービス、AI生成物の来歴と未解決事項は、[素材・ライセンス・来歴台帳](Docs/THIRD_PARTY_NOTICES.md)で管理します。次回の公開更新前に、台帳の「結論」を確認してください。
 
 ## ローカル確認
 
-プロジェクト直下でローカルサーバーを起動し、`http://localhost:8000/` を開きます。
+静的検査はNode.js 24.19.0、ローカル配信はPython 3.12.13で確認しています。追加パッケージは不要です。
+
+プロジェクト直下で次を実行し、<http://127.0.0.1:8000/> を開きます。
 
 ```powershell
-python -m http.server 8000
+python -m http.server 8000 --bind 127.0.0.1
 ```
 
-公開前に以下を確認します。
+ブラウザを使わない静的検査:
 
-1. PC幅とスマートフォン幅で横スクロールや文字切れがない。
-2. ページ内リンク、GitHub、Render、unityroom、YouTubeのリンクが開く。
-3. 画像とYouTube埋め込みが表示され、ブラウザのコンソールにエラーがない。
-4. キーボードのTabキーで「本文へ移動」と主要リンクを操作できる。
-5. HTML内の公開URL、OGP画像URL、掲載作品数が最新になっている。
+```powershell
+node --check assets/js/localization.js
+node scripts/validate-site.js
+```
 
-## セキュリティ方針
+`validate-site.js` は、ローカライズ検査に加えて、参照ファイル、重複ID、ページ内リンク、外部リンクの安全属性、画像・iframeの代替情報、作品数、CSS構文の基本条件を確認します。
 
-- HTML内のContent Security Policyで、読み込める外部リソースをGoogle FontsとYouTubeに限定しています。
-- YouTubeはプライバシー強化モードを使用しています。
-- 公開サーバー側でも `Content-Security-Policy`、`X-Content-Type-Options: nosniff`、`Referrer-Policy`、`Permissions-Policy` を設定すると、より確実です。
-- 新しい外部サービスを追加した場合は、必要な送信先だけContent Security Policyへ追加します。`*` は使用しません。
+公開前に確認する項目:
 
-## バックアップ
+1. 375px、768px、1280pxで日本語とEnglishを切り替え、文字切れや横スクロールがない。
+2. 言語選択を再読み込み後も保持し、保存なしの日本語・英語環境で初期言語が正しい。
+3. 画像、ページ内リンク、GitHub、Render、unityroom、YouTubeが開く。
+4. Tabキーで言語切替・ナビゲーション・主要リンク・詳細開閉を操作できる。
+5. OGP画像URLと掲載作品数が最新になっている。
+6. 静的検査、`git status --short`、`git diff --check` が成功する。
 
-作業完了時は、iCloud Drive内の「(制作中)2026年 奥山貴希ポートフォリオ」へ公開ファイルを上書きします。Git管理情報の `.git/` はバックアップ対象外とし、変更履歴はGitHubリポジトリで管理します。
+## 公開状態と復旧
+
+- この版には、日英切替、翻訳表、静的検査、素材台帳、Git設定が含まれます。
+- GitHubへpushする前に、素材台帳の未解決事項と実ブラウザの最終目視を完了します。
+- 変更を戻すときは、最初に `git diff` と `git status --short` で対象を確認します。作業中の変更を一括で破棄せず、必要なファイルだけを直前コミットから復元します。
+- iCloudバックアップから復元する場合は、別のローカルフォルダーへコピーして検査してから正本と入れ替えます。
+
+## セキュリティとバックアップ
+
+- パスワード、APIキー、個人情報、`.env` はリポジトリへ追加しません。
+- 読み込める外部リソースはContent Security Policyで必要な送信先に限定します。
+- 編集・表示確認・Git操作はローカル作業フォルダーだけで行います。
+- iCloud Driveは全作業完了後のバックアップ出力専用です。iCloud内では編集・ビルド・テストを行いません。
+- バックアップ時は `.git/` を含めず、復元時はローカルの別フォルダーへ展開してから開きます。
 
 ## 最終確認記録
 
-2026-08-27に以下を確認しました。
+2026-08-30に、ローカル素材の欠落なし、主要外部リンクの到達、1280px・768px・375pxでの表示、秘密情報・フォーム送信処理がないことを確認しました。
 
-- HTML/CSS、画像・ファビコン参照、ページ内リンクに欠落なし
-- 外部公開リンク7件が到達可能
-- 375px幅で横方向のはみ出しなし
-- `target="_blank"` のリンクに `rel="noopener noreferrer"` を設定済み
-- 秘密情報、不要なスクリプト、フォーム送信処理なし
+2026-08-31に、ブラウザや外部通信を使わず、日英カタログの欠落・未使用キー、初期言語選択、fallback、localStorage処理、HTML/CSS/JavaScript構文、参照ファイルを静的検査しました。日英切替後の各画面幅の最終目視は、外部通信を止めたローカルサーバーで公開前に行います。
+
+同日にローカルサーバーがHTTP 200を返すことを再確認しましたが、この実行環境の安全制限により、ローカルURLへのブラウザ自動操作はページ操作前に拒否されました。迂回は行っていません。そのため、375px・768px・1280pxの日英最終目視、実ブラウザでのlocalStorage再読込、詳細開閉、console確認は未実施です。ソース上では44px以上の切替領域、8px間隔、英語折返し、両ブレークポイント、翻訳済みalt・aria・メタデータを確認済みです。確認用サーバーは終了後に停止しました。

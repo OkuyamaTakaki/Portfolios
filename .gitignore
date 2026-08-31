@@ -1,0 +1,23 @@
+# OS・エディターの一時ファイル
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+
+# 秘密情報
+.env
+.env.*
+!.env.example
+
+# ローカル生成物
+*.log
+*.tmp
+*.bak
+*.zip
+node_modules/
+dist/
+build/
+.codex/

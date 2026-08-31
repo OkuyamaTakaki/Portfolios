@@ -1,58 +1,66 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-language="ja">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; form-action 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="theme-color" content="#10221c">
-    <meta name="description" content="奥山貴希のポートフォリオ。Java・Spring BootによるWebアプリケーションと、Unity・JavaScriptによるゲーム作品を紹介しています。">
+    <meta name="theme-color" content="#121416">
+    <meta name="description" content="奥山貴希のポートフォリオ。Java・Spring BootによるWebアプリケーションと、Unity・JavaScriptによるゲーム作品を紹介しています。" data-i18n-content="meta.description">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="ja_JP">
-    <meta property="og:title" content="奥山貴希 | Portfolio">
-    <meta property="og:description" content="Webアプリケーションとゲームの制作ポートフォリオ。">
+    <meta property="og:locale" content="ja_JP" data-i18n-content="meta.locale">
+    <meta property="og:title" content="奥山貴希 | Portfolio" data-i18n-content="meta.ogTitle">
+    <meta property="og:description" content="Webアプリケーションとゲームの制作ポートフォリオ。" data-i18n-content="meta.ogDescription">
     <meta property="og:url" content="https://okuyamatakaki.github.io/Portfolios/">
-    <meta property="og:image" content="https://okuyamatakaki.github.io/Portfolios/assets/images/og.png">
-    <meta property="og:image:alt" content="奥山貴希 Portfolio - Web Application / Game Development">
+    <meta property="og:image" content="https://okuyamatakaki.github.io/Portfolios/assets/images/og-industrial.png">
+    <meta property="og:image:alt" content="黒鉄の工場パネルをイメージした奥山貴希 Portfolio 2026" data-i18n-content="meta.imageAlt">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="奥山貴希 | Portfolio">
-    <meta name="twitter:description" content="Webアプリケーションとゲームの制作ポートフォリオ。">
-    <meta name="twitter:image" content="https://okuyamatakaki.github.io/Portfolios/assets/images/og.png">
-    <meta name="twitter:image:alt" content="奥山貴希 Portfolio - Web Application / Game Development">
-    <title>奥山貴希 | ポートフォリオ</title>
+    <meta name="twitter:title" content="奥山貴希 | Portfolio" data-i18n-content="meta.ogTitle">
+    <meta name="twitter:description" content="Webアプリケーションとゲームの制作ポートフォリオ。" data-i18n-content="meta.ogDescription">
+    <meta name="twitter:image" content="https://okuyamatakaki.github.io/Portfolios/assets/images/og-industrial.png">
+    <meta name="twitter:image:alt" content="黒鉄の工場パネルをイメージした奥山貴希 Portfolio 2026" data-i18n-content="meta.imageAlt">
+    <title data-i18n="meta.title">奥山貴希 | ポートフォリオ</title>
     <link rel="canonical" href="https://okuyamatakaki.github.io/Portfolios/">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&amp;family=Noto+Sans+JP:wght@400;500;600;700;800;900&amp;family=Silkscreen:wght@400;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/localization.js" defer></script>
 </head>
 <body id="top">
-    <a class="skip-link" href="#main-content">本文へ移動</a>
+    <a class="skip-link" href="#main-content" data-i18n="skip.toContent">本文へ移動</a>
     <header class="site-header">
-        <a class="site-logo" href="#top" aria-label="奥山貴希 ポートフォリオ トップへ">OT</a>
-        <nav aria-label="メインナビゲーション">
-            <a href="#works">制作物</a>
-            <a href="#skills">スキル</a>
-            <a href="https://github.com/OkuyamaTakaki" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </nav>
+        <a class="site-logo" href="#top" aria-label="奥山貴希 ポートフォリオ トップへ" data-i18n-aria="a11y.siteTop">OT</a>
+        <div class="header-actions">
+            <nav aria-label="メインナビゲーション" data-i18n-aria="a11y.primaryNav">
+                <a href="#works" data-i18n="nav.works">制作物</a>
+                <a href="#skills" data-i18n="nav.skills">スキル</a>
+                <a href="https://github.com/OkuyamaTakaki" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </nav>
+            <div class="language-switcher" role="group" aria-label="表示言語" data-i18n-aria="a11y.languageSwitcher">
+                <button type="button" data-language-option="ja" lang="ja" aria-pressed="true" aria-controls="main-content">日本語</button>
+                <button type="button" data-language-option="en" lang="en" aria-pressed="false" aria-controls="main-content">English</button>
+                <span class="visually-hidden" role="status" aria-live="polite" data-i18n="language.status">日本語で表示中</span>
+            </div>
+        </div>
     </header>
     <main id="main-content">
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-content">
                 <p class="eyebrow">PORTFOLIO 2026</p>
-                <h1 id="hero-title">奥山 貴希</h1>
-                <p class="hero-copy">Webアプリケーションとゲームを、<br>学びながら、動く形へ。</p>
-                <p class="hero-description">Java / Spring Bootを用いたWeb開発から、Unity・JavaScriptによるゲーム制作まで。実装した機能と制作過程が伝わる作品を掲載しています。</p>
+                <h1 id="hero-title" data-i18n="hero.name">奥山 貴希</h1>
+                <p class="hero-copy" data-i18n="hero.copy">Webアプリケーションとゲームを、学びながら、動く形へ。</p>
+                <p class="hero-description" data-i18n="hero.description">Java / Spring BootのWebアプリと、Unity・JavaScriptのゲーム作品を紹介します。</p>
                 <div class="hero-actions">
-                    <a class="button button-primary" href="#works">制作物を見る</a>
-                    <a class="button button-secondary" href="https://github.com/OkuyamaTakaki" target="_blank" rel="noopener noreferrer">GitHubを見る<span aria-hidden="true">↗</span></a>
+                    <a class="button button-primary" href="#works" data-i18n="hero.viewWorks">制作物を見る</a>
+                    <a class="button button-secondary" href="https://github.com/OkuyamaTakaki" target="_blank" rel="noopener noreferrer"><span data-i18n="hero.viewGitHub">GitHubを見る</span><span aria-hidden="true">↗</span></a>
                 </div>
             </div>
             <!-- 掲載作品数を変更した場合は、このカウントも更新する。 -->
             <div class="hero-visual" aria-hidden="true">
                 <span class="hero-number">06</span>
-                <span class="hero-label">PROJECTS</span>
+                <span class="hero-label" data-i18n="hero.projectsLabel">作品</span>
                 <div class="hero-grid">
                     <span>WEB</span>
                     <span>GAME</span>
@@ -64,10 +72,10 @@
         <section class="works-section" id="works" aria-labelledby="works-title">
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow eyebrow-dark">SELECTED WORKS</p>
-                    <h2 id="works-title">制作物</h2>
+                    <p class="eyebrow eyebrow-dark" data-i18n="works.eyebrow">制作物</p>
+                    <h2 id="works-title" data-i18n="works.title">制作物</h2>
                 </div>
-                <p>「何を作ったか」だけでなく、実装した機能や使用技術がひと目で分かるようにまとめています。</p>
+                <p data-i18n="works.description">作品の目的・主な機能・使用技術を短くまとめています。</p>
             </div>
             <article class="project project-featured">
                 <div class="project-index" aria-hidden="true">01</div>
@@ -76,107 +84,111 @@
                         <span class="category">WEB APPLICATION</span>
                         <span>Java / Spring Boot</span>
                     </div>
-                    <h3>Spring Boot<br>日記Webアプリ</h3>
-                    <p class="project-lead">アカウントごとに日記を記録・管理できる、データベース連携のWebアプリケーションです。</p>
-                    <div class="feature-list" aria-label="主な実装機能">
-                        <div><strong>01</strong><span>ログイン</span></div>
-                        <div><strong>02</strong><span>日記の登録・編集</span></div>
-                        <div><strong>03</strong><span>DBへの保存</span></div>
-                        <div><strong>04</strong><span>入力値の検証</span></div>
-                    </div>
-                    <ul class="tech-list" aria-label="使用技術">
+                    <h3><span>Spring Boot</span><br><span data-i18n="diary.title">日記Webアプリ</span></h3>
+                    <p class="project-lead" data-i18n="diary.lead">アカウントごとに日記を登録・編集し、日付で検索できるWebアプリです。並べ替えとページ分割にも対応しています。</p>
+                    <details class="project-details">
+                        <summary><span data-i18n="diary.detailsSummary">主な機能を見る</span></summary>
+                        <div class="feature-list" aria-label="主な実装機能" data-i18n-aria="a11y.features">
+                            <div><strong>01</strong><span data-i18n="diary.featureAccount">アカウント登録・ログイン</span></div>
+                            <div><strong>02</strong><span data-i18n="diary.featureEdit">日記の登録・編集</span></div>
+                            <div><strong>03</strong><span data-i18n="diary.featureSearch">日付検索・並べ替え</span></div>
+                            <div><strong>04</strong><span data-i18n="diary.featureDatabase">DBへの永続保存</span></div>
+                        </div>
+                    </details>
+                    <ul class="tech-list" aria-label="使用技術" data-i18n-aria="a11y.technologies">
                         <li>Java</li>
                         <li>Spring Boot</li>
                         <li>Thymeleaf</li>
-                        <li>H2 Database</li>
+                        <li>PostgreSQL</li>
                         <li>JavaScript</li>
                     </ul>
                     <div class="project-links">
-                        <a class="button button-dark" href="https://springboot-diary-app.onrender.com/login" target="_blank" rel="noopener noreferrer">公開サイト<span aria-hidden="true">↗</span></a>
-                        <a class="text-link" href="https://github.com/OkuyamaTakaki/springboot-diary-app" target="_blank" rel="noopener noreferrer">ソースコードを見る<span aria-hidden="true">↗</span></a>
+                        <a class="button button-dark" href="https://springboot-diary-app.onrender.com/login" target="_blank" rel="noopener noreferrer"><span data-i18n="action.openApp">公開サイト</span><span aria-hidden="true">↗</span></a>
+                        <a class="text-link" href="https://github.com/OkuyamaTakaki/springboot-diary-app" target="_blank" rel="noopener noreferrer"><span data-i18n="action.viewSource">ソースコードを見る</span><span aria-hidden="true">↗</span></a>
                     </div>
                 </div>
             </article>
             <article class="project project-media">
                 <div class="media-frame video-frame">
                     <!-- Cookie送信を抑えるYouTubeのプライバシー強化モードを使用する。 -->
-                    <iframe src="https://www.youtube-nocookie.com/embed/KRvtM4-ouuI" title="2Dタワーディフェンスゲームの紹介動画" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube-nocookie.com/embed/KRvtM4-ouuI" title="2Dタワーディフェンスゲームの紹介動画" data-i18n-title="tower.videoTitle" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="project-body">
                     <div class="project-meta">
                         <span class="category">UNITY GAME</span>
-                        <span>独学約3ヶ月で制作</span>
+                        <span data-i18n="tower.devices">PC / スマホ横対応</span>
                     </div>
-                    <h3>2D タワー<br>ディフェンスゲーム</h3>
-                    <p class="project-lead">ユニットを配置し、迫る敵から拠点を守るブラウザゲーム。Unityの学習開始から約3ヶ月で完成・公開しました。</p>
-                    <ul class="tech-list" aria-label="使用技術">
+                    <h3 data-i18n="tower.title">2D タワーディフェンスゲーム</h3>
+                    <p class="project-lead" data-i18n="tower.lead">3種類のユニットを出撃させ、敵の拠点を攻め落とす2Dタワーディフェンスです。</p>
+                    <ul class="tech-list" aria-label="使用技術" data-i18n-aria="a11y.technologies">
                         <li>Unity</li>
                         <li>2D</li>
                         <li>WebGL</li>
                     </ul>
                     <div class="project-links">
-                        <a class="button button-dark" href="https://unityroom.com/games/towerdefens" target="_blank" rel="noopener noreferrer">ゲームをプレイ<span aria-hidden="true">↗</span></a>
+                        <a class="button button-dark" href="https://unityroom.com/games/towerdefens" target="_blank" rel="noopener noreferrer"><span data-i18n="action.playGame">ゲームをプレイ</span><span aria-hidden="true">↗</span></a>
                     </div>
-                    <p class="project-note">PCでのプレイを推奨しています。</p>
+                    <p class="project-note" data-i18n="tower.note">スマートフォンは横向きで遊べます。</p>
                 </div>
             </article>
-            <section class="works-group" aria-labelledby="javascript-works-title">
+            <section class="works-group" aria-labelledby="mini-game-works-title">
                 <div class="subsection-heading">
-                    <h3 id="javascript-works-title">JavaScript Works</h3>
-                    <p>ブラウザ上で動く仕組みを、基本的なJavaScriptから組み立てた作品です。</p>
+                    <h3 id="mini-game-works-title" data-i18n="mini.title">ミニゲーム作品</h3>
+                    <p data-i18n="mini.description">ブラウザで短時間から遊べる2つの作品です。</p>
                 </div>
                 <div class="project-grid">
                     <article class="project-card">
                         <div class="media-frame">
-                            <img src="assets/images/roulette.png" alt="1から16までの数字を配置したルーレット画面" loading="lazy" decoding="async" width="549" height="661">
+                            <img src="assets/images/roulette.png" alt="1から16までの数字を配置したルーレット画面" data-i18n-alt="roulette.alt" loading="lazy" decoding="async" width="549" height="661">
                         </div>
                         <div class="card-body">
                             <div class="project-meta">
                                 <span class="category">JAVASCRIPT</span>
                                 <span>01</span>
                             </div>
-                            <h4>ルーレット</h4>
-                            <p>スタート・ストップ・リセットの操作で、数字を選出するルーレットです。</p>
+                            <h4 data-i18n="roulette.title">ルーレット</h4>
+                            <p data-i18n="roulette.description">スタート・ストップで数字を選ぶ、JavaScript製のルーレットです。</p>
                         </div>
                     </article>
                     <article class="project-card">
                         <div class="media-frame media-frame-dark">
-                            <img src="assets/images/block-breaker.png" alt="色付きのブロックとボールを表示したブロック崩しゲーム画面" loading="lazy" decoding="async" width="723" height="483">
+                            <img src="assets/images/block-breaker.png" alt="色付きのブロックとボールを表示したブロック崩しゲーム画面" data-i18n-alt="shift.alt" loading="lazy" decoding="async" width="723" height="483">
                         </div>
                         <div class="card-body">
                             <div class="project-meta">
-                                <span class="category">JAVASCRIPT</span>
+                                <span class="category">UNITY / WEBGL</span>
                                 <span>02</span>
                             </div>
-                            <h4>ブロック崩しゲーム</h4>
-                            <p>キーボード操作でパドルを動かし、ボールを打ち返してブロックを崩すゲームです。</p>
+                            <h4>SHIFT BREAKER</h4>
+                            <p data-i18n="shift.description">30秒で全ブロックを壊す工場風ゲーム。3段階の難易度と、反射で加速するボールが特徴です。</p>
+                            <a class="text-link card-link" href="https://unityroom.com/games/shift-breaker-30s" target="_blank" rel="noopener noreferrer"><span data-i18n="action.playGame">ゲームをプレイ</span><span aria-hidden="true">↗</span></a>
                         </div>
                     </article>
                 </div>
             </section>
             <section class="works-group" aria-labelledby="more-unity-works-title">
                 <div class="subsection-heading">
-                    <h3 id="more-unity-works-title">More Unity Works</h3>
-                    <p>試作と公開を重ねながら、ゲーム制作の幅を広げています。</p>
+                    <h3 id="more-unity-works-title" data-i18n="more.title">その他のUnity作品</h3>
+                    <p data-i18n="more.description">ルールがひと目で分かるUnityゲームです。</p>
                 </div>
                 <div class="compact-grid">
                     <article class="compact-card">
                         <span class="compact-number" aria-hidden="true">03</span>
                         <div>
                             <p class="category">UNITY GAME</p>
-                            <h4>ハイターチャレンジ</h4>
-                            <p>Unityで制作し、ブラウザで公開しているゲーム作品です。</p>
+                            <h4 data-i18n="haita.title">ハイターチャレンジ</h4>
+                            <p data-i18n="haita.description">職員に見つからないよう液体を注ぎ、メーターを満タンにするステルスゲームです。</p>
                         </div>
-                        <a href="https://unityroom.com/games/haitachalleng" target="_blank" rel="noopener noreferrer" aria-label="ハイターチャレンジをプレイ"><span aria-hidden="true">↗</span></a>
+                        <a href="https://unityroom.com/games/haitachalleng" target="_blank" rel="noopener noreferrer" aria-label="ハイターチャレンジをプレイ" data-i18n-aria="haita.playLabel"><span aria-hidden="true">↗</span></a>
                     </article>
                     <article class="compact-card">
                         <span class="compact-number" aria-hidden="true">04</span>
                         <div>
-                            <p class="category">UNITY PROTOTYPE</p>
-                            <h4>試作タイルマップゲーム</h4>
-                            <p>タイルマップを用いたゲーム表現を試したプロトタイプです。</p>
+                            <p class="category">UNITY GAME</p>
+                            <h4 data-i18n="grass.title">30秒 草収穫ゲーム</h4>
+                            <p data-i18n="grass.description">草を集め、とげを避けて高得点を狙うゲーム。3段階の難易度を選べます。</p>
                         </div>
-                        <a href="https://unityroom.com/games/jinseigames" target="_blank" rel="noopener noreferrer" aria-label="試作タイルマップゲームをプレイ"><span aria-hidden="true">↗</span></a>
+                        <a href="https://unityroom.com/games/jinseigames" target="_blank" rel="noopener noreferrer" aria-label="30秒 草収穫ゲームをプレイ" data-i18n-aria="grass.playLabel"><span aria-hidden="true">↗</span></a>
                     </article>
                 </div>
             </section>
@@ -184,25 +196,25 @@
         <section class="skills-section" id="skills" aria-labelledby="skills-title">
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow">TECHNOLOGY</p>
-                    <h2 id="skills-title">使用技術</h2>
+                    <p class="eyebrow" data-i18n="skills.eyebrow">技術</p>
+                    <h2 id="skills-title" data-i18n="skills.title">使用技術</h2>
                 </div>
-                <p>Webアプリケーションとゲーム、両方の制作を通じて実装力を磨いています。</p>
+                <p data-i18n="skills.description">Web開発とゲーム制作で使用した技術です。</p>
             </div>
             <div class="skills-grid">
                 <article>
                     <span aria-hidden="true">01</span>
-                    <h3>Backend</h3>
-                    <p>Java / Spring Boot / H2 Database</p>
+                    <h3 data-i18n="skills.backend">バックエンド</h3>
+                    <p>Java / Spring Boot / PostgreSQL</p>
                 </article>
                 <article>
                     <span aria-hidden="true">02</span>
-                    <h3>Frontend</h3>
+                    <h3 data-i18n="skills.frontend">フロントエンド</h3>
                     <p>HTML / CSS / JavaScript / Thymeleaf</p>
                 </article>
                 <article>
                     <span aria-hidden="true">03</span>
-                    <h3>Game</h3>
+                    <h3 data-i18n="skills.game">ゲーム</h3>
                     <p>Unity / 2D / WebGL</p>
                 </article>
             </div>
@@ -210,10 +222,10 @@
     </main>
     <footer>
         <div>
-            <p class="footer-name">奥山 貴希</p>
-            <p>Web Application / Game Development</p>
+            <p class="footer-name" data-i18n="footer.name">奥山 貴希</p>
+            <p data-i18n="footer.tagline">Webアプリケーション / ゲーム開発</p>
         </div>
-        <a href="#top">ページ上部へ<span aria-hidden="true">↑</span></a>
+        <a href="#top"><span data-i18n="footer.toTop">ページ上部へ</span><span aria-hidden="true">↑</span></a>
     </footer>
 </body>
 </html>
