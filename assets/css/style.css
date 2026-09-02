@@ -1,3 +1,12 @@
+/* M+ FONT LICENSEのローカル書体だけを読み込み、閲覧時の外部フォント通信を防ぐ。 */
+@font-face {
+    font-family: "PixelMplus Portfolio";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400 900;
+    src: url("../fonts/PixelMplus12-Regular.ttf") format("truetype");
+}
+
 /* 色・余白・共通幅を変数にまとめ、デザイン変更時の修正漏れを防ぐ。 */
 :root {
     --color-ink: #f5f1e6;
@@ -9,9 +18,10 @@
     --color-accent-dark: #ffdc6f;
     --color-line: #3e4242;
     --shadow-card: 0 18px 48px rgb(0 0 0 / 38%), inset 0 1px 0 rgb(255 255 255 / 5%);
-    --font-sans: "Noto Sans JP", "Yu Gothic UI", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
-    --font-display: "DotGothic16", "Noto Sans JP", "Yu Gothic", sans-serif;
-    --font-pixel: "Silkscreen", "Noto Sans JP", monospace;
+    --font-sans: "PixelMplus Portfolio", "Yu Gothic UI", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+    --font-display: "PixelMplus Portfolio", "Yu Gothic UI", "Yu Gothic", sans-serif;
+    --font-pixel: "PixelMplus Portfolio", "Yu Gothic UI", monospace;
+    --font-size-small: 0.8rem;
     --content-width: 1120px;
 }
 
@@ -184,7 +194,7 @@ footer {
     color: var(--color-muted);
     cursor: pointer;
     font-family: var(--font-pixel);
-    font-size: 0.68rem;
+    font-size: var(--font-size-small);
     font-weight: 700;
     letter-spacing: 0.04em;
 }
@@ -252,7 +262,7 @@ footer {
 .eyebrow {
     margin-bottom: 18px;
     color: var(--color-accent);
-    font-size: 0.8rem;
+    font-size: var(--font-size-small);
     font-family: var(--font-pixel);
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -372,7 +382,7 @@ footer {
     margin-top: 12px;
     color: var(--color-muted);
     font-family: var(--font-pixel);
-    font-size: 0.74rem;
+    font-size: var(--font-size-small);
     font-weight: 700;
     letter-spacing: 0.18em;
 }
@@ -392,7 +402,7 @@ footer {
     background: #181b1c;
     color: var(--color-muted);
     font-family: var(--font-pixel);
-    font-size: 0.72rem;
+    font-size: var(--font-size-small);
     font-weight: 800;
     letter-spacing: 0.12em;
     place-items: center;
@@ -469,7 +479,7 @@ footer {
 .category {
     margin: 0;
     color: #5e770f;
-    font-size: 0.8rem;
+    font-size: var(--font-size-small);
     font-weight: 800;
     letter-spacing: 0.14em;
 }
@@ -519,7 +529,7 @@ footer {
 
 .feature-list strong {
     color: var(--color-muted);
-    font-size: 0.78rem;
+    font-size: var(--font-size-small);
     letter-spacing: 0.1em;
 }
 
@@ -589,7 +599,7 @@ footer {
     border-radius: 999px;
     background: #f8faf6;
     color: #52615a;
-    font-size: 0.78rem;
+    font-size: var(--font-size-small);
     font-weight: 700;
 }
 
@@ -622,6 +632,30 @@ footer {
     width: 100%;
     height: 100%;
     border: 0;
+}
+
+.video-consent {
+    display: grid;
+    width: min(420px, calc(100% - 40px));
+    min-height: 220px;
+    margin: 20px auto;
+    padding: 28px;
+    align-content: center;
+    justify-items: center;
+    gap: 20px;
+    color: var(--color-text);
+    text-align: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+}
+
+.video-consent .button {
+    min-width: min(240px, 100%);
+}
+
+.video-consent .button:disabled {
+    cursor: not-allowed;
+    opacity: 0.72;
 }
 
 .project-note {
@@ -734,7 +768,7 @@ footer {
 
 .compact-number {
     color: #a1aaa5;
-    font-size: 0.8rem;
+    font-size: var(--font-size-small);
     font-weight: 800;
 }
 
@@ -803,7 +837,7 @@ footer {
 
 .skills-grid span {
     color: var(--color-accent);
-    font-size: 0.8rem;
+    font-size: var(--font-size-small);
     font-weight: 800;
 }
 
@@ -845,6 +879,54 @@ footer a {
     gap: 10px;
     font-weight: 800;
     text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.policy-main {
+    width: min(920px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 64px 0 96px;
+}
+
+.policy-header,
+.policy-section {
+    padding: 28px;
+    border: 1px solid var(--color-line);
+    background: var(--color-surface);
+}
+
+.policy-header {
+    margin-bottom: 24px;
+}
+
+.policy-section + .policy-section {
+    margin-top: 24px;
+}
+
+.policy-section h2,
+.policy-section h3 {
+    margin-top: 1.5em;
+}
+
+.policy-section h2:first-child,
+.policy-section h3:first-child {
+    margin-top: 0;
+}
+
+.policy-section li + li {
+    margin-top: 0.6em;
+}
+
+.policy-main a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
 }
 
 /*

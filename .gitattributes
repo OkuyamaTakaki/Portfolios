@@ -5,4 +5,6 @@
 *.svg text eol=lf
 .gitignore text eol=lf
 .gitattributes text eol=lf
+# Preserve the upstream PixelMplus signature separator verbatim.
+Docs/Licenses/PixelMplus/README.txt whitespace=-trailing-space
 *.png binary

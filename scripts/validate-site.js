@@ -6,7 +6,9 @@ const assert = require("node:assert/strict");
 
 const projectRoot = path.resolve(__dirname, "..");
 const html = readProjectFile("index.html");
+const privacyHtml = readProjectFile("privacy.html");
 const css = readProjectFile("assets/css/style.css");
+const htmlDocuments = [html, privacyHtml];
 
 // 翻訳表、HTMLの翻訳キー、初期言語、保存処理を先に確認する。
 require("./validate-localization.js");
@@ -37,7 +39,7 @@ const internalLinks = getTags(html, "a")
 const missingAnchors = internalLinks.filter((anchor) => !ids.includes(anchor));
 assert.deepEqual(missingAnchors, [], "移動先が存在しないページ内リンクがあります。");
 
-const unsafeExternalLinks = getTags(html, "a")
+const unsafeExternalLinks = htmlDocuments.flatMap((document) => getTags(document, "a"))
     .filter((tag) => getAttribute(tag, "target") === "_blank")
     .filter((tag) => {
         const rel = new Set((getAttribute(tag, "rel") || "").split(/\s+/));
@@ -46,7 +48,7 @@ const unsafeExternalLinks = getTags(html, "a")
 assert.deepEqual(unsafeExternalLinks, [], "新しいタブで開くリンクのrel属性が不足しています。");
 
 const missingLocalFiles = [];
-for (const tag of getTags(html, "(?:link|script|img)")) {
+for (const tag of htmlDocuments.flatMap((document) => getTags(document, "(?:link|script|img)"))) {
     const reference = getAttribute(tag, "href") || getAttribute(tag, "src");
     if (!reference || /^(?:https?:|data:|#)/.test(reference)) {
         continue;
@@ -86,6 +88,10 @@ for (const button of getTags(html, "button")) {
     assert.equal(getAttribute(button, "type"), "button", "buttonのtype属性を明示してください。");
 }
 
+assert.match(html, /data-video-pending/, "権利確認前の動画を無効化した案内がありません。");
+assert.doesNotMatch(html, /data-youtube-video-id=/, "権利確認前のYouTube動画IDを有効化しないでください。");
+assert.doesNotMatch(html, /<iframe\b[^>]*youtube-nocookie\.com/, "YouTube iframeを初期表示で読み込まないでください。");
+
 const projectArticles = getTags(html, "article").filter((tag) => {
     const classes = new Set((getAttribute(tag, "class") || "").split(/\s+/));
     return ["project-featured", "project-media", "project-card", "compact-card"].some((name) => classes.has(name));
@@ -113,6 +119,7 @@ const sourceText = [
     html,
     css,
     readProjectFile("assets/js/localization.js"),
+    privacyHtml,
     readProjectFile("README.md")
 ].join("\n");
 assert.doesNotMatch(sourceText, /[A-Za-z]:\\Users\\/i, "個人PCの絶対パスがソースに含まれています。");

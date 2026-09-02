@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; form-action 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; frame-src 'none'; connect-src 'self'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#121416">
     <meta name="description" content="奥山貴希のポートフォリオ。Java・Spring BootによるWebアプリケーションと、Unity・JavaScriptによるゲーム作品を紹介しています。" data-i18n-content="meta.description">
@@ -12,19 +12,16 @@
     <meta property="og:title" content="奥山貴希 | Portfolio" data-i18n-content="meta.ogTitle">
     <meta property="og:description" content="Webアプリケーションとゲームの制作ポートフォリオ。" data-i18n-content="meta.ogDescription">
     <meta property="og:url" content="https://okuyamatakaki.github.io/Portfolios/">
-    <meta property="og:image" content="https://okuyamatakaki.github.io/Portfolios/assets/images/og-industrial.png">
-    <meta property="og:image:alt" content="黒鉄の工場パネルをイメージした奥山貴希 Portfolio 2026" data-i18n-content="meta.imageAlt">
+    <meta property="og:image" content="https://okuyamatakaki.github.io/Portfolios/assets/images/og-portfolio-2026.png">
+    <meta property="og:image:alt" content="黒鉄の開発パネルに奥山貴希 Portfolio 2026と掲載分野を示した共有画像" data-i18n-content="meta.imageAlt">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="奥山貴希 | Portfolio" data-i18n-content="meta.ogTitle">
     <meta name="twitter:description" content="Webアプリケーションとゲームの制作ポートフォリオ。" data-i18n-content="meta.ogDescription">
-    <meta name="twitter:image" content="https://okuyamatakaki.github.io/Portfolios/assets/images/og-industrial.png">
-    <meta name="twitter:image:alt" content="黒鉄の工場パネルをイメージした奥山貴希 Portfolio 2026" data-i18n-content="meta.imageAlt">
+    <meta name="twitter:image" content="https://okuyamatakaki.github.io/Portfolios/assets/images/og-portfolio-2026.png">
+    <meta name="twitter:image:alt" content="黒鉄の開発パネルに奥山貴希 Portfolio 2026と掲載分野を示した共有画像" data-i18n-content="meta.imageAlt">
     <title data-i18n="meta.title">奥山貴希 | ポートフォリオ</title>
     <link rel="canonical" href="https://okuyamatakaki.github.io/Portfolios/">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&amp;family=Noto+Sans+JP:wght@400;500;600;700;800;900&amp;family=Silkscreen:wght@400;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/localization.js" defer></script>
 </head>
@@ -110,8 +107,11 @@
             </article>
             <article class="project project-media">
                 <div class="media-frame video-frame">
-                    <!-- Cookie送信を抑えるYouTubeのプライバシー強化モードを使用する。 -->
-                    <iframe src="https://www.youtube-nocookie.com/embed/KRvtM4-ouuI" title="2Dタワーディフェンスゲームの紹介動画" data-i18n-title="tower.videoTitle" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <!-- 動画の権利者確認が完了するまで、外部通信と再生導線を無効にする。 -->
+                    <div class="video-consent" role="status" data-video-pending data-i18n-aria="tower.videoTitle" aria-label="2Dタワーディフェンスゲームの紹介動画">
+                        <p data-i18n="tower.videoPending">紹介動画は権利確認後に公開します。ゲーム本体は下のリンクから遊べます。</p>
+                        <button class="button button-light" type="button" disabled data-i18n="tower.videoPendingButton">動画は確認中</button>
+                    </div>
                 </div>
                 <div class="project-body">
                     <div class="project-meta">
@@ -139,7 +139,7 @@
                 <div class="project-grid">
                     <article class="project-card">
                         <div class="media-frame">
-                            <img src="assets/images/roulette.png" alt="1から16までの数字を配置したルーレット画面" data-i18n-alt="roulette.alt" loading="lazy" decoding="async" width="549" height="661">
+                            <img src="assets/sources/roulette-portfolio-2026.svg" alt="1から16までの数字を配置したルーレット画面" data-i18n-alt="roulette.alt" loading="lazy" decoding="async" width="549" height="661">
                         </div>
                         <div class="card-body">
                             <div class="project-meta">
@@ -152,7 +152,7 @@
                     </article>
                     <article class="project-card">
                         <div class="media-frame media-frame-dark">
-                            <img src="assets/images/block-breaker.png" alt="色付きのブロックとボールを表示したブロック崩しゲーム画面" data-i18n-alt="shift.alt" loading="lazy" decoding="async" width="723" height="483">
+                            <img src="assets/images/shift-breaker-2026.png" alt="SHIFT BREAKERの日本語タイトル画面" data-i18n-alt="shift.alt" loading="lazy" decoding="async" width="1280" height="720">
                         </div>
                         <div class="card-body">
                             <div class="project-meta">
@@ -185,10 +185,10 @@
                         <span class="compact-number" aria-hidden="true">04</span>
                         <div>
                             <p class="category">UNITY GAME</p>
-                            <h4 data-i18n="grass.title">30秒 草収穫ゲーム</h4>
+                            <h4 data-i18n="grass.title">30秒！草かりチャレンジ</h4>
                             <p data-i18n="grass.description">草を集め、とげを避けて高得点を狙うゲーム。3段階の難易度を選べます。</p>
                         </div>
-                        <a href="https://unityroom.com/games/jinseigames" target="_blank" rel="noopener noreferrer" aria-label="30秒 草収穫ゲームをプレイ" data-i18n-aria="grass.playLabel"><span aria-hidden="true">↗</span></a>
+                        <a href="https://unityroom.com/games/jinseigames" target="_blank" rel="noopener noreferrer" aria-label="30秒！草かりチャレンジをプレイ" data-i18n-aria="grass.playLabel"><span aria-hidden="true">↗</span></a>
                     </article>
                 </div>
             </section>
@@ -225,7 +225,10 @@
             <p class="footer-name" data-i18n="footer.name">奥山 貴希</p>
             <p data-i18n="footer.tagline">Webアプリケーション / ゲーム開発</p>
         </div>
-        <a href="#top"><span data-i18n="footer.toTop">ページ上部へ</span><span aria-hidden="true">↑</span></a>
+        <div class="footer-links">
+            <a href="privacy.html" data-i18n="footer.privacy">プライバシー</a>
+            <a href="#top"><span data-i18n="footer.toTop">ページ上部へ</span><span aria-hidden="true">↑</span></a>
+        </div>
     </footer>
 </body>
 </html>

@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-    <title>奥山貴希 Portfolio</title>
-    <circle cx="32" cy="32" r="30" fill="#10221c"/>
-    <text x="32" y="40" fill="#ffffff" font-family="Arial, sans-serif" font-size="23" font-weight="700" text-anchor="middle">OT</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="favicon-title">
+  <title id="favicon-title">奥山貴希 Portfolio</title>
+  <rect x="3" y="3" width="58" height="58" rx="12" fill="#101213" stroke="#ffd052" stroke-width="4"/>
+  <path d="M17 19h30v7H36v23h-8V26H17z" fill="#f5f1e6"/>
+  <circle cx="15" cy="15" r="3" fill="#ffd052"/>
+  <circle cx="49" cy="49" r="3" fill="#ffd052"/>
 </svg>
