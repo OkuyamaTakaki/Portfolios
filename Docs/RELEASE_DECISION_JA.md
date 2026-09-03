@@ -13,13 +13,13 @@ AIの検査合格は公開承認ではありません。今回のローカルcom
 | 製品・版 | 奥山貴希ポートフォリオ / 2026-09-03 ローカル保存候補 |
 | 公開日時・タイムゾーン | 未確認 / Asia/Tokyo |
 | 公開先 | 既存GitHub Pages `https://okuyamatakaki.github.io/Portfolios/`。今回の更新先として人が未承認 |
-| 実行ファイル構造ハッシュ | SHA-256 `8A7EED74CB51310A799A38A01FBC6C4B94C5F407241E7D815A2102A4BB2A0C3C`。対象9点は下記「ハッシュ対象」 |
-| 関連Git commit | HEAD `a3e230744a8997a33524c2a88b60deddef3b2324`に、Haita名称・説明の未commit変更を追加。公開対象との最終対応は未確認 |
+| 実行ファイル構造ハッシュ | SHA-256 `BB60EB54B0BE325EAD2A8CE3409A052086929C449BB407376488E52F319E8401`。名称・画像更新後の対象9点は下記「ハッシュ対象」 |
+| 関連Git commit | 公開候補の保存済みHEADは`bca89f8ff193c2ce4ebd72312702ed456b55b6a0`。2026-09-03のブラウザー再確認と名称予備検索の文書差分は未commit |
 | 公開を判断する人・役割 | 未確認 |
 | 利用者向け問い合わせ先 | 仮窓口はGitHubプロフィール `https://github.com/OkuyamaTakaki` とすることを利用者が決定済み。正式な非公開窓口と、公開版でこの仮窓口を採用する最終判断は未確認 |
-| 権利・ライセンス | 技術確認済み。`THIRD_PARTY_NOTICES.md`と制作記録を人が未確認 |
+| 権利・ライセンス | 旧称の混同懸念を受け、利用者判断で`30秒！ファクトリーブレイク`と`奥山貴希のありがとう日記`へ変更済み。`THIRD_PARTY_NOTICES.md`、新しい制作記録、新名称の正式調査は人が未確認 |
 | プライバシー・セキュリティ | 技術確認済み。日英privacy、CSP、秘密情報0件。人の内容確認は未確認 |
-| 端末・UI証拠 | Chrome 152 Headlessで共通6画面幅の日英、640×360・422×195の200%相当領域、44px未満0、横あふれ0を確認済み。実機0 / 80台 |
+| 端末・UI証拠 | 名称更新後をIn-app Chromiumで共通6画面幅の日英、640×360・422×195の200%相当領域、44px未満0、横あふれ0、新画像1280×720読込み、warning／error 0と確認。実機0 / 80台 |
 | 既知の制限 | 80台実機、端末上のFPS・起動、クラッシュ復帰、表示中Chrome／Safariの200%表示、人の快適性評価が未確認 |
 | 戻す対象 | 公開基準 `origin/main` の `522fd932c37f0bb25e7d9ddc4be0fb5b63159e08`。公開前に復元成果物と手順を人が再確認 |
 | 最終判断 | 未確認（承認／見送り／条件付き承認／公開停止を人が選ぶ） |
@@ -32,7 +32,7 @@ AIの検査合格は公開承認ではありません。今回のローカルcom
 - `assets/fonts/PixelMplus12-Regular.ttf`
 - `assets/images/favicon.svg`
 - `assets/images/og-portfolio-2026.png`
-- `assets/images/shift-breaker-2026.png`
+- `assets/images/factory-break-2026.jpg`
 - `assets/js/localization.js`
 - `assets/sources/roulette-portfolio-2026.svg`
 - `index.html`
@@ -60,7 +60,7 @@ AIの検査合格は公開承認ではありません。今回のローカルcom
 
 ## 現在公開中の版との差
 
-2026-09-03に既存GitHub PagesをChrome 152 Headlessで読み取り確認しました。HTTP 200で390×844の横あふれは0ですが、日英切替、プライバシー導線、今回確定したHaita名は未反映です。公開版のHaita表示は旧名`ハイターチャレンジ`でした。ローカルHEADは`origin/main`より3commit先で、今回の名称変更2ファイルはさらに未commitです。公開版の問題をローカル候補の合格と混同せず、push直前に差分と戻し方を人が確認します。
+2026-09-03に既存GitHub PagesをChrome 152 Headlessで読み取り確認しました。HTTP 200で390×844の横あふれは0ですが、日英切替、プライバシー導線、今回確定したHaita名は未反映です。公開版のHaita表示は旧名`ハイターチャレンジ`でした。公開候補の保存済みHEAD `bca89f8f`は`origin/main`より4commit先で、今回の再検証・名称予備検索文書はさらに未commitです。公開版の問題をローカル候補の合格と混同せず、push直前に差分と戻し方を人が確認します。
 
 ## データ・費用・外部サービス
 
